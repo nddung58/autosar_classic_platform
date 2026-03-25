@@ -1,0 +1,16 @@
+**/.metadata/
+**/.s32ds_packages_support/
+**/RemoteSystemsTempFiles/
+
+**/FreeRTOS_TAD_logs/
+**/ZephyrRTOS_TAD_logs/
+
+**/Debug/
+**/Release/
+**/build/
+
+.vscode/
+
+*.log
+*.tmp
+*.bak

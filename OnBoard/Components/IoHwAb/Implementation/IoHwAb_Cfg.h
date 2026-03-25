@@ -1,0 +1,7 @@
+#ifndef IOHWAB_CFG_H_
+#define IOHWAB_CFG_H_
+
+#define IOHWAB_PRECOMPILE_SUPPORT (STD_ON)
+#define IOHWAB_DEV_ERROR_DETECT (STD_OFF)
+
+#endif
