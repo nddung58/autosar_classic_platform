@@ -19,4 +19,6 @@ void IoHwAb_Init(const IoHwAb_ConfigType *ConfigPtr)
     IoHwAb_ConfigPtr = ConfigPtr;
 #endif
     IoHwAb_Analog_Init();
+
+    IoHwAb_Pwm_Init();
 }

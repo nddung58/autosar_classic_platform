@@ -85,9 +85,9 @@ extern "C"{
 /* Ftm instance index for configuration PwmFtmCh_0 */
 #define FTM_PWM_IP_I0_CH0_CFG      (0U)
 /* Ftm instance index for configuration PwmFtmCh_0 */
-#define FTM_PWM_IP_I2_CH4_CFG      (2U)
+#define FTM_PWM_IP_I3_CH0_CFG      (3U)
 /* Ftm instance index for configuration PwmFtmCh_1 */
-#define FTM_PWM_IP_I2_CH5_CFG      (2U)
+#define FTM_PWM_IP_I3_CH1_CFG      (3U)
 
 /*==================================================================================================
 *                                      DEFINES AND MACROS
@@ -120,15 +120,15 @@ extern const Ftm_Pwm_Ip_UserCfgType Ftm_Pwm_Ip_UserCfg0;
 extern const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_I0_Ch0;
 
 /*================================================================================================*/
-/* Ftm instance 2 User configuration structure */
-extern const Ftm_Pwm_Ip_UserCfgType Ftm_Pwm_Ip_UserCfg2;
+/* Ftm instance 3 User configuration structure */
+extern const Ftm_Pwm_Ip_UserCfgType Ftm_Pwm_Ip_UserCfg3;
 
-/* Channel configurations for Ftm instance 2 */
-/* Ftm channel 4 configuration */
-extern const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_I2_Ch4;
+/* Channel configurations for Ftm instance 3 */
+/* Ftm channel 0 configuration */
+extern const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_I3_Ch0;
 
-/* Ftm channel 5 configuration */
-extern const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_I2_Ch5;
+/* Ftm channel 1 configuration */
+extern const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_I3_Ch1;
 
 
 #define PWM_STOP_SEC_CONFIG_DATA_UNSPECIFIED

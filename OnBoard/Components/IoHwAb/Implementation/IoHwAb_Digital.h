@@ -30,6 +30,22 @@ extern "C"
         IoHwAb_LevelType *value,
         IoHwAb_StatusType *status);
 
+#define IOHWAB_SIGNAL_DIGITALSIGNAL_MOTORA_IN1 ((IoHwAb_SignalType)1u)
+
+    Std_ReturnType IoHwAb_Set_Digital_DigitalSignal_MotorA_In1(IoHwAb_LevelType value, IoHwAb_StatusType *status);
+
+#define IOHWAB_SIGNAL_DIGITALSIGNAL_MOTORA_IN2 ((IoHwAb_SignalType)2u)
+
+    Std_ReturnType IoHwAb_Set_Digital_DigitalSignal_MotorA_In2(IoHwAb_LevelType value, IoHwAb_StatusType *status);
+
+#define IOHWAB_SIGNAL_DIGITALSIGNAL_MOTORB_IN1 ((IoHwAb_SignalType)3u)
+
+    Std_ReturnType IoHwAb_Set_Digital_DigitalSignal_MotorB_In1(IoHwAb_LevelType value, IoHwAb_StatusType *status);
+
+#define IOHWAB_SIGNAL_DIGITALSIGNAL_MOTORB_IN2 ((IoHwAb_SignalType)4u)
+
+    Std_ReturnType IoHwAb_Set_Digital_DigitalSignal_MotorB_In2(IoHwAb_LevelType value, IoHwAb_StatusType *status);
+
     /***************************************** Digital inputs *****************************************/
 
 #define IOHWAB_SIGNAL_DIGITALSIGNAL_GEARP ((IoHwAb_SignalType)1u)
@@ -70,8 +86,9 @@ extern "C"
         IoHwAb_StatusType *status);
 
 /* Validation macros */
-#define IOHWAB_SIGNAL_IS_VALID_DIGITAL_OUTPUT(signal) \
-    ((signal) == IOHWAB_SIGNAL_DIGITALSIGNAL_LEDBLUE)
+#define IOHWAB_SIGNAL_IS_VALID_DIGITAL_OUTPUT(signal)     \
+    (((signal) == IOHWAB_SIGNAL_DIGITALSIGNAL_LEDBLUE) || \
+     ((signal) == IOHWAB_SIGNAL_DIGITALSIGNAL_LEDBLUE))
 
 #define IOHWAB_SIGNAL_IS_VALID_DIGITAL_INPUT(signal)    \
     (((signal) == IOHWAB_SIGNAL_DIGITALSIGNAL_GEARP) || \

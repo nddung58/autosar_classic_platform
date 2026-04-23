@@ -8,7 +8,7 @@ extern "C"
 
 #include "Std_Types.h"
 #include "ComStackTypes.h"
-#include "Com.h"
+#include "Com_Cfg.h"
 
     typedef enum
     {
@@ -22,6 +22,9 @@ extern "C"
         RTE_CBK_SIG_MODE = (CbkHandleIdType)MODE_NTF,
         RTE_CBK_SIG_RPM_NOW = (CbkHandleIdType)RPM_NOW_NTF,
         RTE_CBK_SIG_RPM_TARGET = (CbkHandleIdType)RPM_TARGET_CMD,
+        RTE_CBK_SIG_STEERING_ANGLE = (CbkHandleIdType)STEERING_ANGLE_NTF,
+        RTE_CBK_SIG_WHEEL_ANGLE = (CbkHandleIdType)WHEEL_ANGLE_NTF,
+        RTE_CBK_SIG_SPEED = (CbkHandleIdType)SPEED_NTF,
 
         RTE_CBK_SIG_MAX
     } Rte_CbkSignalHandleType;

@@ -101,11 +101,6 @@ extern "C"{
 #else
     #error "FTM_1 instance cannot be used by QDEC. Instance locked by another driver!"
 #endif
-#ifndef FTM_2_USED
-    #define FTM_2_USED
-#else
-    #error "FTM_2 instance cannot be used by QDEC. Instance locked by another driver!"
-#endif
 
 /*==================================================================================================
 *                                              ENUMS

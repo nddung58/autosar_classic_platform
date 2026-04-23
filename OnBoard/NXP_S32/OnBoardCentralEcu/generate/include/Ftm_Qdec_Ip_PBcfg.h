@@ -102,7 +102,7 @@ extern "C"{
 
 #define QDEC_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Qdec_MemMap.h"
-extern const Ftm_Qdec_Ip_ConfigType Ftm_Qdec_Ip_InstanceConfig[2U];
+extern const Ftm_Qdec_Ip_ConfigType Ftm_Qdec_Ip_InstanceConfig[1U];
 
 #define QDEC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Qdec_MemMap.h"

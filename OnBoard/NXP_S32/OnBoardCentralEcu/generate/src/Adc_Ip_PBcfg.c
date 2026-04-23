@@ -104,14 +104,14 @@ static const Adc_Ip_ChanConfigType AdcIpChansConfig_0[3U] =
     },
     {
         1U, /* ChnIdx */
-        ADC_IP_INPUTCHAN_EXT0, /* Channel */
+        ADC_IP_INPUTCHAN_EXT4, /* Channel */
     #if (ADC_IP_AIEN_INTERRUPT_ENABLE == STD_ON)
         (boolean)FALSE /* InterruptEnable */
     #endif /* (ADC_IP_AIEN_INTERRUPT_ENABLE == STD_ON) */
     },
     {
         2U, /* ChnIdx */
-        ADC_IP_INPUTCHAN_EXT1, /* Channel */
+        ADC_IP_INPUTCHAN_EXT5, /* Channel */
     #if (ADC_IP_AIEN_INTERRUPT_ENABLE == STD_ON)
         (boolean)FALSE /* InterruptEnable */
     #endif /* (ADC_IP_AIEN_INTERRUPT_ENABLE == STD_ON) */

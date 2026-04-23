@@ -105,7 +105,7 @@ extern "C"{
 * @brief    Configurations for QDEC modules which use FTM
 */
 
-const Ftm_Qdec_Ip_ConfigType Ftm_Qdec_Ip_InstanceConfig[2U] =
+const Ftm_Qdec_Ip_ConfigType Ftm_Qdec_Ip_InstanceConfig[1U] =
 {
     /* QdecInstanceConfig_0 -> FTM_1 */
     {
@@ -115,14 +115,14 @@ const Ftm_Qdec_Ip_ConfigType Ftm_Qdec_Ip_InstanceConfig[2U] =
         (boolean) FALSE,     /** @brief Timer Overflow Interrupt */
         /** @brief Configuration of input phase A */
         {
-            (boolean) FALSE,      /** @brief Enables the filter for the quadrature decoder phase A,B inputs */
-            (uint8) 0,       /** @brief Filter value (if input filter is enabled) */
-            (Ftm_Qdec_Ip_PhasePolarityType) FTM_PHASE_INVERT        /** @brief Phase polarity */
+            (boolean) TRUE,      /** @brief Enables the filter for the quadrature decoder phase A,B inputs */
+            (uint8) 6,       /** @brief Filter value (if input filter is enabled) */
+            (Ftm_Qdec_Ip_PhasePolarityType) FTM_PHASE_NORMAL        /** @brief Phase polarity */
         },
         /** @brief Configuration of input phase B */
         {
-            (boolean) FALSE,       /** @brief Enables the filter for the quadrature decoder phase A,B inputs */
-            (uint8) 0,       /** @brief Filter value (if input filter is enabled) */
+            (boolean) TRUE,       /** @brief Enables the filter for the quadrature decoder phase A,B inputs */
+            (uint8) 6,       /** @brief Filter value (if input filter is enabled) */
             (Ftm_Qdec_Ip_PhasePolarityType) FTM_PHASE_NORMAL        /** @brief Phase polarity */
         },
         {
@@ -130,45 +130,6 @@ const Ftm_Qdec_Ip_ConfigType Ftm_Qdec_Ip_InstanceConfig[2U] =
             NULL_PTR,
             /** @brief Parameters used by callback function. */
             (uint8) 0U
-        },
-#if (FTM_QDEC_SET_CLOCK_MODE_API == STD_ON)
-        /** @brief Ftm instance Alternate Prescaler parameters */
-        (uint8)((uint32)(FTM_SC_PS_DIV1_U32) << QDEC_FTM_ALT_CLOCK_DIV_SHIFT),
-        /** @brief  Ftm Control Value */
-        (uint8)
-        (
-            ((uint8)(FTM_CLOCK_SOURCE_SYSTEMCLK) << QDEC_FTM_CLOCK_SOURCE_SHIFT)   |   /* Clock source */
-            (uint8)((uint32)(FTM_SC_PS_DIV1_U32) << QDEC_FTM_CLOCK_DIV_SHIFT)         /* Timer clock prescaler configuration */
-        ),
-#endif
-        (Ftm_Qdec_Ip_ClockSourceType) FTM_CLOCK_SOURCE_SYSTEMCLK,     /**< @brief FlexTimer Clock Source */
-        (Ftm_Qdec_Ip_ClockFilterPrescType) FTM_CLOCK_FILTER_PRESCALER_DIV1       /**< @brief FlexTimer Clock Filter Prescaler */
-
-    },
-
-    /* QdecInstanceConfig_1 -> FTM_2 */
-    {
-        (Ftm_Qdec_Ip_EncodingModeType) FTM_MODE_PHASE_ENCODE,       /** @brief Encoding mode used by FTM in the QDEC mode */
-        (uint16) 0,       /** @brief Minimum counter value */
-        (uint16) 65535,       /** @brief Maximum counter value */
-        (boolean) FALSE,     /** @brief Timer Overflow Interrupt */
-        /** @brief Configuration of input phase A */
-        {
-            (boolean) FALSE,      /** @brief Enables the filter for the quadrature decoder phase A,B inputs */
-            (uint8) 0,       /** @brief Filter value (if input filter is enabled) */
-            (Ftm_Qdec_Ip_PhasePolarityType) FTM_PHASE_INVERT        /** @brief Phase polarity */
-        },
-        /** @brief Configuration of input phase B */
-        {
-            (boolean) FALSE,       /** @brief Enables the filter for the quadrature decoder phase A,B inputs */
-            (uint8) 0,       /** @brief Filter value (if input filter is enabled) */
-            (Ftm_Qdec_Ip_PhasePolarityType) FTM_PHASE_NORMAL        /** @brief Phase polarity */
-        },
-        {
-            /** @brief Callback function for instances. */
-            NULL_PTR,
-            /** @brief Parameters used by callback function. */
-            (uint8) 1U
         },
 #if (FTM_QDEC_SET_CLOCK_MODE_API == STD_ON)
         /** @brief Ftm instance Alternate Prescaler parameters */

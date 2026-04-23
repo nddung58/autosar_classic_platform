@@ -238,8 +238,8 @@ const Ftm_Pwm_Ip_UserCfgType Ftm_Pwm_Ip_UserCfg0 =
 
 /*================================================================================================*/
 
-/* Ftm instance 2 synchronization initialization configuration */
-static const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_SyncCfg2 =
+/* Ftm instance 3 synchronization initialization configuration */
+static const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_SyncCfg3 =
 {
     /* SyncMode */                   FTM_PWM_IP_SYNC_SWTRIGGER,
     /* HwSync0 */                    (boolean)FALSE,
@@ -263,8 +263,8 @@ static const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_SyncCfg2 =
 };
 
 
-/* Ftm instance 2 initialization configuration */
-static const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_InstCfg2 =
+/* Ftm instance 3 initialization configuration */
+static const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_InstCfg3 =
 {
     /* ClkSrc */                FTM_PWM_IP_CLOCK_SOURCE_SYSTEMCLK,
     /* ClkPs */                 FTM_PWM_IP_CLOCK_DIV_1,
@@ -301,25 +301,25 @@ static const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_InstCfg2 =
 #if (defined(FTM_PWM_IP_SIM_AVAILABLE) && (FTM_PWM_IP_SIM_AVAILABLE == STD_ON))
     /* ObeCtrl */               (boolean)TRUE,
 #endif
-    /* SyncCfg */               &Ftm_Pwm_Ip_SyncCfg2
+    /* SyncCfg */               &Ftm_Pwm_Ip_SyncCfg3
 };
 
 
-/* Ftm instance 2 paired channels initialization configuration */
+/* Ftm instance 3 paired channels initialization configuration */
 
 
 
-/* Ftm instance 2 channels initialization configuration */
+/* Ftm instance 3 channels initialization configuration */
 
-/* Ftm channel 4 configuration */
-const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_I2_Ch4 =
+/* Ftm channel 0 configuration */
+const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_I3_Ch0 =
 {
-    /* ChannelId */             4U,
+    /* ChannelId */             0U,
     /* ChannelMode */           FTM_PWM_IP_MODE_EDGE_ALIGNED_HIGH,
     /* ChIrqEn */               (boolean)TRUE,
     /* ChannelCb */             {
         /* FunctionCallback */      &Pwm_Ipw_FlexTimerNotification,
-        /* CbParam */               4U
+        /* CbParam */               0U
                                 },
     /* ChOutputEn */            (boolean)TRUE,
     /* SwControlEn */           (boolean)FALSE,
@@ -337,15 +337,15 @@ const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_I2_Ch4 =
     /* PairCfg */               NULL_PTR
 };
 
-/* Ftm channel 5 configuration */
-const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_I2_Ch5 =
+/* Ftm channel 1 configuration */
+const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_I3_Ch1 =
 {
-    /* ChannelId */             5U,
+    /* ChannelId */             1U,
     /* ChannelMode */           FTM_PWM_IP_MODE_EDGE_ALIGNED_HIGH,
     /* ChIrqEn */               (boolean)TRUE,
     /* ChannelCb */             {
         /* FunctionCallback */      &Pwm_Ipw_FlexTimerNotification,
-        /* CbParam */               5U
+        /* CbParam */               1U
                                 },
     /* ChOutputEn */            (boolean)TRUE,
     /* SwControlEn */           (boolean)FALSE,
@@ -365,17 +365,17 @@ const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_I2_Ch5 =
 
 
 /* Ftm channels configuration array */
-static const Ftm_Pwm_Ip_ChannelConfigType * const Ftm_Pwm_Ip_I2_ChArray[2U] =
+static const Ftm_Pwm_Ip_ChannelConfigType * const Ftm_Pwm_Ip_I3_ChArray[2U] =
 {
-    &Ftm_Pwm_Ip_I2_Ch4,
-    &Ftm_Pwm_Ip_I2_Ch5
+    &Ftm_Pwm_Ip_I3_Ch0,
+    &Ftm_Pwm_Ip_I3_Ch1
 };
 
-/* Ftm instance 2 User configuration structure */
-const Ftm_Pwm_Ip_UserCfgType Ftm_Pwm_Ip_UserCfg2 =
+/* Ftm instance 3 User configuration structure */
+const Ftm_Pwm_Ip_UserCfgType Ftm_Pwm_Ip_UserCfg3 =
 {
-    /* InstanceCfg */           &Ftm_Pwm_Ip_InstCfg2,
-    /* ConfiguredChArray */     Ftm_Pwm_Ip_I2_ChArray,
+    /* InstanceCfg */           &Ftm_Pwm_Ip_InstCfg3,
+    /* ConfiguredChArray */     Ftm_Pwm_Ip_I3_ChArray,
     /* NoOfConfiguredCh */      2U
 #if (defined(FTM_PWM_IP_HAS_FAULT) && (FTM_PWM_IP_HAS_FAULT == STD_ON))
     ,

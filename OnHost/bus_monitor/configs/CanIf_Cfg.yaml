@@ -1,0 +1,214 @@
+CanIf:
+  init_cfg:
+    controller_mode: STARTED
+    pdu_mode: ONLINE
+
+  rx_pdu_cfg:
+    - rx_pdu_id: 0
+      name: CanIfRxPduCfg_0
+      CanId: 0x000
+      can_mask: 0x7FF
+      is_extended: false
+      upper_layer: CanTp
+      rx_indication: CanTp_RxIndication
+
+    - rx_pdu_id: 1
+      name: CanIfRxPduCfg_1
+      CanId: 0x001
+      can_mask: 0x7FF
+      is_extended: false
+      upper_layer: CanTp
+      rx_indication: CanTp_RxIndication
+
+    - rx_pdu_id: 2
+      name: CanIfRxPduCfg_2
+      CanId: 0x002
+      can_mask: 0x7FF
+      is_extended: false
+      upper_layer: CanTp
+      rx_indication: CanTp_RxIndication
+
+    - rx_pdu_id: 3
+      name: CanIfRxPduCfg_3
+      CanId: 0x003
+      can_mask: 0x7FF
+      is_extended: false
+      upper_layer: CanTp
+      rx_indication: CanTp_RxIndication
+
+    - rx_pdu_id: 4
+      name: CanIfRxPduCfg_4
+      CanId: 0x004
+      can_mask: 0x7FF
+      is_extended: false
+      upper_layer: CanTp
+      rx_indication: CanTp_RxIndication
+
+    - rx_pdu_id: 5
+      name: CanIfRxPduCfg_5
+      CanId: 0x005
+      can_mask: 0x7FF
+      is_extended: false
+      upper_layer: CanTp
+      rx_indication: CanTp_RxIndication
+    
+    - rx_pdu_id: 6
+      name: CanIfRxPduCfg_6
+      CanId: 0x006
+      can_mask: 0x7FF
+      is_extended: false
+      upper_layer: CanTp
+      rx_indication: CanTp_RxIndication
+
+    - rx_pdu_id: 7
+      name: CanIfRxPduCfg_7
+      CanId: 0x007
+      can_mask: 0x7FF
+      is_extended: false
+      upper_layer: CanTp
+      rx_indication: CanTp_RxIndication
+    
+    - rx_pdu_id: 8
+      name: CanIfRxPduCfg_8
+      CanId: 0x008
+      can_mask: 0x7FF
+      is_extended: false
+      upper_layer: CanTp
+      rx_indication: CanTp_RxIndication
+
+    - rx_pdu_id: 9
+      name: CanIfRxPduCfg_9
+      CanId: 0x009
+      can_mask: 0x7FF
+      is_extended: false
+      upper_layer: CanTp
+      rx_indication: CanTp_RxIndication
+
+    - rx_pdu_id: 10
+      name: CanIfRxPduCfg_10
+      CanId: 0x00A
+      can_mask: 0x7FF
+      is_extended: false
+      upper_layer: CanTp
+      rx_indication: CanTp_RxIndication
+
+    - rx_pdu_id: 11
+      name: CanIfRxPduCfg_11
+      CanId: 0x00B
+      can_mask: 0x7FF
+      is_extended: false
+      upper_layer: CanTp
+      rx_indication: CanTp_RxIndication
+
+    - rx_pdu_id: 12
+      name: CanIfRxPduCfg_12
+      CanId: 0x00C
+      can_mask: 0x7FF
+      is_extended: false
+      upper_layer: CanTp
+      rx_indication: CanTp_RxIndication
+
+  tx_pdu_cfg:
+    - tx_pdu_id: 0
+      name: CanIfTxPduCfg_0
+      CanId: 0x000
+      is_extended: false
+      dlc: 8
+      upper_layer: CanTp
+      tx_confirmation: CanTp_TxConfirmation
+
+    - tx_pdu_id: 1
+      name: CanIfTxPduCfg_1
+      CanId: 0x001
+      is_extended: false
+      dlc: 8
+      upper_layer: CanTp
+      tx_confirmation: CanTp_TxConfirmation
+
+    - tx_pdu_id: 2
+      name: CanIfTxPduCfg_2
+      CanId: 0x002
+      is_extended: false
+      dlc: 8
+      upper_layer: CanTp
+      tx_confirmation: CanTp_TxConfirmation
+
+    - tx_pdu_id: 3
+      name: CanIfTxPduCfg_3
+      CanId: 0x003
+      is_extended: false
+      dlc: 8
+      upper_layer: CanTp
+      tx_confirmation: CanTp_TxConfirmation
+
+    - tx_pdu_id: 4
+      name: CanIfTxPduCfg_4
+      CanId: 0x004
+      is_extended: false
+      dlc: 8
+      upper_layer: CanTp
+      tx_confirmation: CanTp_TxConfirmation
+
+    - tx_pdu_id: 5
+      name: CanIfTxPduCfg_5
+      CanId: 0x005
+      is_extended: false
+      dlc: 8
+      upper_layer: CanTp
+      tx_confirmation: CanTp_TxConfirmation
+
+    - tx_pdu_id: 6
+      name: CanIfTxPduCfg_6
+      CanId: 0x006
+      is_extended: false
+      dlc: 8
+      upper_layer: CanTp
+      tx_confirmation: CanTp_TxConfirmation
+
+    - tx_pdu_id: 7
+      name: CanIfTxPduCfg_7
+      CanId: 0x007
+      is_extended: false
+      dlc: 8
+      upper_layer: CanTp
+      tx_confirmation: CanTp_TxConfirmation
+
+    - tx_pdu_id: 8
+      name: CanIfTxPduCfg_8
+      CanId: 0x008
+      is_extended: false
+      dlc: 8
+      upper_layer: CanTp
+      tx_confirmation: CanTp_TxConfirmation
+
+    - tx_pdu_id: 1
+      name: CanIfTxPduCfg_9
+      CanId: 0x009
+      is_extended: false
+      dlc: 8
+      upper_layer: CanTp
+      tx_confirmation: CanTp_TxConfirmation
+
+    - tx_pdu_id: 10
+      name: CanIfTxPduCfg_10
+      CanId: 0x00A
+      is_extended: false
+      dlc: 8
+      upper_layer: CanTp
+      tx_confirmation: CanTp_TxConfirmation
+
+    - tx_pdu_id: 11
+      name: CanIfTxPduCfg_11
+      CanId: 0x00B
+      is_extended: false
+      dlc: 8
+      upper_layer: CanTp
+      tx_confirmation: CanTp_TxConfirmation
+
+    - tx_pdu_id: 12
+      name: CanIfTxPduCfg_12
+      CanId: 0x00C
+      is_extended: false
+      dlc: 8
+      upper_layer: CanTp
+      tx_confirmation: CanTp_TxConfirmation

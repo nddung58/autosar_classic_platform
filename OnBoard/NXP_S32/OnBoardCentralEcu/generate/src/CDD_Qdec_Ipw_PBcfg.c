@@ -141,21 +141,20 @@ extern "C"{
 #include "Qdec_MemMap.h"
 
 
-const Qdec_Ipw_MapElType Logic2HwMap[2U] =
+const Qdec_Ipw_MapElType Logic2HwMap[1U] =
 {
-    {QDEC_IPW_IPTYPE_FTM, (uint8) 1},
-    {QDEC_IPW_IPTYPE_FTM, (uint8) 2}
+    {QDEC_IPW_IPTYPE_FTM, (uint8) 1}
 };
 
 /**
 * @brief    Configurations of QDEC Ipw layer
 */
-const Qdec_Ipw_ConfigType Qdec_Ipw_Config[2U] =
+const Qdec_Ipw_ConfigType Qdec_Ipw_Config[1U] =
 {
     {
         /* FTM details */
         /* Number of FTMs used by current partition */
-        (uint8) 2,
+        (uint8) 1,
         /* Refferenced FTM IP config structure array */
         Ftm_Qdec_Ip_InstanceConfig,
         Logic2HwMap

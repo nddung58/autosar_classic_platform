@@ -134,7 +134,7 @@ extern "C" {
 /**
 * @brief    Configurations for QDEC instances on Partition 
 */
-static const Qdec_InstanceConfigType Qdec_InstanceConfig[2U] =
+static const Qdec_InstanceConfigType Qdec_InstanceConfig[1U] =
 {
     /* QdecInstanceConfig_0 -> FTM_1 */
     {
@@ -144,38 +144,14 @@ static const Qdec_InstanceConfigType Qdec_InstanceConfig[2U] =
         (boolean) FALSE,   /** @brief Timer Overflow Interrupt */
         /** @brief Configuration of input phase A */
         {
-            (boolean) FALSE,    /** @brief Enables the filter for the quadrature decoder phase A,B inputs */
-            (uint8) 0,   /** @brief Filter value (if input filter is enabled) */
-            (Qdec_PhasePolarityType) PHASE_INVERT    /** @brief Phase polarity */
-        },
-        /** @brief Configuration of input phase B */
-        {
-            (boolean) FALSE,    /** @brief Enables the filter for the quadrature decoder phase A,B inputs */
-            (uint8) 0,   /** @brief Filter value (if input filter is enabled) */
+            (boolean) TRUE,    /** @brief Enables the filter for the quadrature decoder phase A,B inputs */
+            (uint8) 6,   /** @brief Filter value (if input filter is enabled) */
             (Qdec_PhasePolarityType) PHASE_NORMAL    /** @brief Phase polarity */
         },
-#if (QDEC_NOTIFICATION_SUPPORTED == STD_ON)
-        /** @brief  Qdec notification function */
-          NULL_PTR
-#endif
-    },
-
-    /* QdecInstanceConfig_1 -> FTM_2 */
-    {
-        (Qdec_EncodingModeType) MODE_PHASE_ENCODE,   /** @brief */
-        (uint16) 0,   /** @brief Minimum counter value */
-        (uint16) 65535,   /** @brief Maximum counter value */
-        (boolean) FALSE,   /** @brief Timer Overflow Interrupt */
-        /** @brief Configuration of input phase A */
-        {
-            (boolean) FALSE,    /** @brief Enables the filter for the quadrature decoder phase A,B inputs */
-            (uint8) 0,   /** @brief Filter value (if input filter is enabled) */
-            (Qdec_PhasePolarityType) PHASE_INVERT    /** @brief Phase polarity */
-        },
         /** @brief Configuration of input phase B */
         {
-            (boolean) FALSE,    /** @brief Enables the filter for the quadrature decoder phase A,B inputs */
-            (uint8) 0,   /** @brief Filter value (if input filter is enabled) */
+            (boolean) TRUE,    /** @brief Enables the filter for the quadrature decoder phase A,B inputs */
+            (uint8) 6,   /** @brief Filter value (if input filter is enabled) */
             (Qdec_PhasePolarityType) PHASE_NORMAL    /** @brief Phase polarity */
         },
 #if (QDEC_NOTIFICATION_SUPPORTED == STD_ON)
@@ -186,16 +162,18 @@ static const Qdec_InstanceConfigType Qdec_InstanceConfig[2U] =
 };
 
 /*
-*   @brief Postbuild Configuration for Partition 
+*   @brief Pre-Compile Default Configuration for Partition 
 */
+#if (STD_ON == QDEC_PRECOMPILE_SUPPORT)
 const Qdec_ConfigType Qdec_Config =
 {
     (uint8) 0U,    /* Partition index */
-    (uint8) 2U, /* Number of QDEC instances on this Partition */
+    (uint8) 1U, /* Number of QDEC instances on this Partition */
     &Qdec_InstanceConfig,   /* Qdec_InstanceConfigTypePtr */
     Qdec_Ipw_Config
 };
 
+#endif /*STD_ON == QDEC_PRECOMPILE_SUPPORT*/
 #define QDEC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Qdec_MemMap.h"
 

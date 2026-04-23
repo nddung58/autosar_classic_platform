@@ -5,7 +5,6 @@
 #include "ComStack_Types.h"
 #include "Can_GeneralTypes.h"
 #include "string.h"
-#include "Dio.h"
 
 #define CAN_STANDARD_SIZE 8
 

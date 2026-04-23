@@ -1,0 +1,213 @@
+test_classes:
+  - pdu: LED_BLUE_CMD_PDU
+    description: Test class for LED blue command/response
+    test_cases:
+      - id: TC_LED_BLUE_001
+        title: Valid value OFF
+        script: command_response_check
+        request_value: 0
+        expected_response: 0
+
+      - id: TC_LED_BLUE_002
+        title: Valid value ON
+        script: command_response_check
+        request_value: 1
+        expected_response: 1
+
+      - id: TC_LED_BLUE_003
+        title: Invalid value 2
+        script: command_response_check
+        request_value: 2
+        expected_response: 2
+
+      - id: TC_LED_BLUE_004
+        title: Invalid value 255
+        script: command_response_check
+        request_value: 255
+        expected_response: 2
+
+  - pdu: ECHO_REVERSE_CMD_PDU
+    description: Test class for reverse echo command/response
+    test_cases:
+      - id: TC_ECHO_REVERSE_001
+        title: Valid disable
+        script: command_response_check
+        request_value: 0
+        expected_response: 0
+
+      - id: TC_ECHO_REVERSE_002
+        title: Valid enable
+        script: command_response_check
+        request_value: 1
+        expected_response: 1
+
+      - id: TC_ECHO_REVERSE_003
+        title: Invalid value 2
+        script: command_response_check
+        request_value: 2
+        expected_response: 2
+
+  - pdu: RPM_TARGET_CMD_PDU
+    description: Request only PDU
+    test_cases:
+      - id: TC_RPM_TARGET_001
+        title: Valid RPM target low
+        script: request_only_check
+        request_value: 10
+        expected_result: SENT
+
+      - id: TC_RPM_TARGET_002
+        title: Valid RPM target high
+        script: request_only_check
+        request_value: 200
+        expected_result: SENT
+
+      - id: TC_RPM_TARGET_003
+        title: Invalid RPM target over range
+        script: request_only_check
+        request_value: 256
+        expected_result: REJECTED_BY_SCRIPT
+
+  - pdu: PEDAL_NTF_PDU
+    description: Notification PDU validation
+    test_cases:
+      - id: TC_PEDAL_001
+        title: Valid pedal min
+        script: notification_value_check
+        inject_value: 0
+        expected_result: VALID
+
+      - id: TC_PEDAL_002
+        title: Valid pedal max
+        script: notification_value_check
+        inject_value: 100
+        expected_result: VALID
+
+      - id: TC_PEDAL_003
+        title: Invalid pedal over max
+        script: notification_value_check
+        inject_value: 101
+        expected_result: INVALID
+
+  - pdu: BRAKE_NTF_PDU
+    description: Brake notification validation
+    test_cases:
+      - id: TC_BRAKE_001
+        title: Valid brake min
+        script: notification_value_check
+        inject_value: 0
+        expected_result: VALID
+
+      - id: TC_BRAKE_002
+        title: Valid brake max
+        script: notification_value_check
+        inject_value: 100
+        expected_result: VALID
+
+      - id: TC_BRAKE_003
+        title: Invalid brake 255
+        script: notification_value_check
+        inject_value: 255
+        expected_result: INVALID
+
+  - pdu: GEAR_NTF_PDU
+    description: Gear notification validation
+    test_cases:
+      - id: TC_GEAR_001
+        title: Valid gear 0
+        script: notification_value_check
+        inject_value: 0
+        expected_result: VALID
+
+      - id: TC_GEAR_002
+        title: Valid gear 6
+        script: notification_value_check
+        inject_value: 6
+        expected_result: VALID
+
+      - id: TC_GEAR_003
+        title: Invalid gear 7
+        script: notification_value_check
+        inject_value: 7
+        expected_result: INVALID
+
+  - pdu: MODE_NTF_PDU
+    description: Mode notification validation
+    test_cases:
+      - id: TC_MODE_001
+        title: Valid mode 0
+        script: notification_value_check
+        inject_value: 0
+        expected_result: VALID
+
+      - id: TC_MODE_002
+        title: Valid mode 3
+        script: notification_value_check
+        inject_value: 3
+        expected_result: VALID
+
+      - id: TC_MODE_003
+        title: Invalid mode 4
+        script: notification_value_check
+        inject_value: 4
+        expected_result: INVALID
+
+  - pdu: RPM_NOW_NTF_PDU
+    description: RPM current notification validation
+    test_cases:
+      - id: TC_RPM_NOW_001
+        title: Valid RPM now
+        script: notification_value_check
+        inject_value: 123
+        expected_result: VALID
+
+      - id: TC_RPM_NOW_002
+        title: Invalid negative RPM
+        script: notification_value_check
+        inject_value: -1
+        expected_result: INVALID
+
+  - pdu: STEERING_ANGLE_NTF_PDU
+    description: Steering angle notification validation
+    test_cases:
+      - id: TC_STEERING_001
+        title: Valid steering angle
+        script: notification_value_check
+        inject_value: 40
+        expected_result: VALID
+
+      - id: TC_STEERING_002
+        title: Invalid steering angle
+        script: notification_value_check
+        inject_value: 300
+        expected_result: INVALID
+
+  - pdu: WHEEL_ANGLE_NTF_PDU
+    description: Wheel angle notification validation
+    test_cases:
+      - id: TC_WHEEL_001
+        title: Valid wheel angle
+        script: notification_value_check
+        inject_value: 25
+        expected_result: VALID
+
+      - id: TC_WHEEL_002
+        title: Invalid wheel angle
+        script: notification_value_check
+        inject_value: 300
+        expected_result: INVALID
+
+  - pdu: SPEED_NTF_PDU
+    description: Speed notification validation
+    test_cases:
+      - id: TC_SPEED_001
+        title: Valid speed
+        script: notification_value_check
+        inject_value: 80
+        expected_result: VALID
+
+      - id: TC_SPEED_002
+        title: Invalid speed
+        script: notification_value_check
+        inject_value: 300
+        expected_result: INVALID

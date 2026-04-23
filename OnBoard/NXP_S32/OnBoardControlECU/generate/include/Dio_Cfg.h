@@ -243,6 +243,32 @@ extern "C" {
 *
 */
 #define DioConf_DioChannel_LedBlue  ((uint16)0x0060U)
+/**
+* @brief          Symbolic name for the channel MotorB_In1.
+*
+*/
+#define DioConf_DioChannel_MotorB_In1  ((uint16)0x0068U)
+/**
+* @brief          Symbolic name for the channel MotorB_In2.
+*
+*/
+#define DioConf_DioChannel_MotorB_In2  ((uint16)0x0069U)
+/* ---------- DioPort_1 ---------- */
+
+/**
+* @brief          Symbolic name for the port DioPort_1.
+*/
+#define DioConf_DioPort_DioPort_1  ((uint8)0x02U)
+/**
+* @brief          Symbolic name for the channel MotorA_In1.
+*
+*/
+#define DioConf_DioChannel_MotorA_In1  ((uint16)0x0048U)
+/**
+* @brief          Symbolic name for the channel MotorA_In2.
+*
+*/
+#define DioConf_DioChannel_MotorA_In2  ((uint16)0x0049U)
 
 /*=================================================================================================
 *                                             ENUMS

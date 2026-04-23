@@ -1,0 +1,144 @@
+REPORT_DIR = "reports"
+LOG_DIR = "logs"
+PROJECT_NAME = "CAN System Test"
+TEST_ENV = "S32K144_SLCAN_Bench"
+SW_VERSION = "v1.0.0"
+can:
+  interface: slcan
+  channel: COM4
+  bitrate: 500000
+  receive_timeout_ms: 500
+  tx_padding: 0
+
+report:
+  output_dir: reports
+  json_name: comstack_report.json
+  html_name: comstack_report.html
+
+defaults:
+  request_dlc: 8
+  response_dlc: 8
+  signal_byte_index: 0
+  response_byte_index: 0
+
+# response code quy ước mẫu:
+# 0 = success/off/disable
+# 1 = success/on/enable
+# 2 = invalid value / rejected
+# 255 = no response timeout (dùng ở runner, không gửi thật lên bus)
+
+pdus:
+  LED_BLUE_CMD_PDU:
+    pdu_id: 0x100
+    type: command_response
+    request_signal: LED_BLUE_CMD
+    response_id: 0x180
+    response_signal: LED_BLUE_RSP
+    request_dlc: 8
+    response_dlc: 8
+    request_byte_index: 0
+    response_byte_index: 0
+    valid_values: [0, 1]
+    invalid_values: [2, 255]
+    response_map:
+      0: 0
+      1: 1
+    invalid_expected_response: 2
+
+  ECHO_REVERSE_CMD_PDU:
+    pdu_id: 0x101
+    type: command_response
+    request_signal: ECHO_REVERSE_CMD
+    response_id: 0x181
+    response_signal: ECHO_REVERSE_RSP
+    request_dlc: 8
+    response_dlc: 8
+    request_byte_index: 0
+    response_byte_index: 0
+    valid_values: [0, 1]
+    invalid_values: [2, 255]
+    response_map:
+      0: 0
+      1: 1
+    invalid_expected_response: 2
+
+  RPM_TARGET_CMD_PDU:
+    pdu_id: 0x102
+    type: request_only
+    request_signal: RPM_TARGET_CMD
+    request_dlc: 8
+    request_byte_index: 0
+    valid_range: [0, 255]
+    invalid_values: [256, -1]
+
+  PEDAL_NTF_PDU:
+    pdu_id: 0x200
+    type: notification
+    signal: PEDAL_NTF
+    dlc: 8
+    byte_index: 0
+    valid_range: [0, 100]
+    invalid_values: [101, 255]
+
+  BRAKE_NTF_PDU:
+    pdu_id: 0x201
+    type: notification
+    signal: BRAKE_NTF
+    dlc: 8
+    byte_index: 0
+    valid_range: [0, 100]
+    invalid_values: [101, 255]
+
+  GEAR_NTF_PDU:
+    pdu_id: 0x202
+    type: notification
+    signal: GEAR_NTF
+    dlc: 8
+    byte_index: 0
+    valid_values: [0, 1, 2, 3, 4, 5, 6]
+    invalid_values: [7, 255]
+
+  MODE_NTF_PDU:
+    pdu_id: 0x203
+    type: notification
+    signal: MODE_NTF
+    dlc: 8
+    byte_index: 0
+    valid_values: [0, 1, 2, 3]
+    invalid_values: [4, 255]
+
+  RPM_NOW_NTF_PDU:
+    pdu_id: 0x204
+    type: notification
+    signal: RPM_NOW_NTF
+    dlc: 8
+    byte_index: 0
+    valid_range: [0, 255]
+    invalid_values: [256, -1]
+
+  STEERING_ANGLE_NTF_PDU:
+    pdu_id: 0x205
+    type: notification
+    signal: STEERING_ANGLE_NTF
+    dlc: 8
+    byte_index: 0
+    valid_range: [0, 255]
+    invalid_values: [256, -1]
+
+  WHEEL_ANGLE_NTF_PDU:
+    pdu_id: 0x206
+    type: notification
+    signal: WHEEL_ANGLE_NTF
+    dlc: 8
+    byte_index: 0
+    valid_range: [0, 255]
+    invalid_values: [256, -1]
+
+  SPEED_NTF_PDU:
+    pdu_id: 0x207
+    type: notification
+    signal: SPEED_NTF
+    dlc: 8
+    byte_index: 0
+    valid_range: [0, 255]
+    invalid_values: [256, -1]

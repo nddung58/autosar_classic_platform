@@ -13,25 +13,19 @@ void Swc_LedControl_Init(void)
 
 void Swc_LedControl_Run10ms(void)
 {
-    if (led_s.inited != TRUE)
-    {
-        return;
-    }
-    // Led blue dio
+	    if (led_s.inited == FALSE)
+	        Swc_LedControl_Init();
     uint8 l;
     Std_ReturnType ret;
     ret = Rte_Read_LedControl_ComCmd_LedBlueCmd(&l);
 
-    if (ret != E_OK)
+    if (ret == E_OK)
     {
-        return;
+    	(void)Rte_Call_LedControl_Digital_SetLevel(l);
     }
 
-    ret = Rte_Call_LedControl_Digital_SetLevel(l);
 
-    // Led Red pwm
-    if (led_s.inited == FALSE)
-        Swc_LedControl_Init();
+
     uint8 potentPct;
     ret = Rte_Call_LedControl_Analog_PotentPct(&potentPct);
 

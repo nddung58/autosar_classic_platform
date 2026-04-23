@@ -199,7 +199,7 @@ static const Adc_GroupConfigurationType Adc_GroupsCfg[] =
         /**< @brief Last Channel configured */
         (Adc_ChannelType)(ADC_ID_CHANNEL_U8(12)), /* LastCh */
         /**< @brief First Channel configured */
-        (Adc_ChannelType)(ADC_ID_CHANNEL_U8(0)), /* FirstCh */
+        (Adc_ChannelType)(ADC_ID_CHANNEL_U8(4)), /* FirstCh */
         /**< @brief Enables or Disables the ADC and DMA interrupts */
         (uint8)(STD_OFF), /* AdcWithoutInterrupt */
         /**< @brief Enables or Disables configuring external DMA channel in the group */

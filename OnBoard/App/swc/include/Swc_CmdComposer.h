@@ -5,11 +5,17 @@
 
 typedef struct
 {
+#if defined(ECU_CENTRAL)
     uint8 throttlePedal;
     uint8 throttleBrake;
     uint8 gear;
     uint8 mode;
-    uint16 rpmTarget;
+    sint16 steeringAngle;
+#endif
+    sint16 wheelAngle;
+    sint16 rpmTarget;
+    uint8 speed;
+
 } CmdComposer_Type;
 
 typedef struct

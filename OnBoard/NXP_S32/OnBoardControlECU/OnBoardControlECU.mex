@@ -24,6 +24,9 @@
          </generated_project_files>
          <pins_profile>
             <processor_version>0.0.0</processor_version>
+            <external_user_signals>
+               <properties/>
+            </external_user_signals>
          </pins_profile>
          <functions_list>
             <function name="PortContainer_0_VS_0">
@@ -74,19 +77,39 @@
                         <pin_feature name="direction" value="OUTPUT"/>
                      </pin_features>
                   </pin>
-                  <pin peripheral="FTM2" signal="ftm2_ch5" pin_num="24" pin_signal="PTD14">
-                     <pin_features>
-                        <pin_feature name="direction" value="OUTPUT"/>
-                     </pin_features>
-                  </pin>
-                  <pin peripheral="FTM2" signal="ftm2_ch4" pin_num="25" pin_signal="PTD13">
-                     <pin_features>
-                        <pin_feature name="direction" value="OUTPUT"/>
-                     </pin_features>
-                  </pin>
                   <pin peripheral="ADC0" signal="adc0_se12" pin_num="46" pin_signal="PTC14">
                      <pin_features>
                         <pin_feature name="direction" value="INPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="PORTC" signal="port, 8" pin_num="56" pin_signal="PTC8">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="PORTC" signal="port, 9" pin_num="55" pin_signal="PTC9">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="PORTD" signal="port, 8" pin_num="42" pin_signal="PTD8">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="PORTD" signal="port, 9" pin_num="41" pin_signal="PTD9">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="FTM3" signal="ftm3_ch0" pin_num="77" pin_signal="PTB8">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
+                     </pin_features>
+                  </pin>
+                  <pin peripheral="FTM3" signal="ftm3_ch1" pin_num="76" pin_signal="PTB9">
+                     <pin_features>
+                        <pin_feature name="direction" value="OUTPUT"/>
                      </pin_features>
                   </pin>
                </pins>
@@ -421,9 +444,14 @@
                   <data type="Version">1.0.0</data>
                </feature>
             </dependency>
-            <dependency resourceType="Tool" resourceId="Clocks" description="The Clocks tool is required by the Peripherals tool, but it is disabled." problem_level="2" source="Peripherals">
+            <dependency resourceType="SWComponent" resourceId="platform.driver.gpt" description="Gpt is not found in the toolchain/IDE project. The project will not compile!" problem_level="2" source="Peripherals">
                <feature name="enabled" evaluation="equal">
-                  <data>true</data>
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.driver.gpt" description="An unsupported version of the Gpt in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. The project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">1.0.0</data>
                </feature>
             </dependency>
          </dependencies>
@@ -483,6 +511,9 @@
             <file path="generate/include/Flexio_Pwm_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Flexio_Pwm_Ip_CfgDefines.h" update_enabled="true"/>
             <file path="generate/include/Flexio_Pwm_Ip_PBcfg.h" update_enabled="true"/>
+            <file path="generate/include/Ftm_Gpt_Ip_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/Ftm_Gpt_Ip_Cfg_Defines.h" update_enabled="true"/>
+            <file path="generate/include/Ftm_Gpt_Ip_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/Ftm_Mcl_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Ftm_Mcl_Ip_Cfg_DeviceRegisters.h" update_enabled="true"/>
             <file path="generate/include/Ftm_Pwm_Ip_Cfg.h" update_enabled="true"/>
@@ -492,8 +523,17 @@
             <file path="generate/include/Ftm_Qdec_Ip_CfgDefines.h" update_enabled="true"/>
             <file path="generate/include/Ftm_Qdec_Ip_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/Gpio_Dio_Ip_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/Gpt_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/Gpt_Ipw_PBcfg.h" update_enabled="true"/>
+            <file path="generate/include/Gpt_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/IntCtrl_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/IntCtrl_Ip_CfgDefines.h" update_enabled="true"/>
+            <file path="generate/include/LPit_Gpt_Ip_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/LPit_Gpt_Ip_Cfg_Defines.h" update_enabled="true"/>
+            <file path="generate/include/LPit_Gpt_Ip_PBcfg.h" update_enabled="true"/>
+            <file path="generate/include/Lptmr_Gpt_Ip_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/Lptmr_Gpt_Ip_Cfg_Defines.h" update_enabled="true"/>
+            <file path="generate/include/Lptmr_Gpt_Ip_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/Mcu_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Mcu_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/Mpu_Ip_Cfg.h" update_enabled="true"/>
@@ -519,6 +559,9 @@
             <file path="generate/include/Ram_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/Ram_Ip_Cfg_Defines.h" update_enabled="true"/>
             <file path="generate/include/Ram_Ip_PBcfg.h" update_enabled="true"/>
+            <file path="generate/include/SRtc_Ip_Cfg.h" update_enabled="true"/>
+            <file path="generate/include/SRtc_Ip_Cfg_Defines.h" update_enabled="true"/>
+            <file path="generate/include/SRtc_Ip_PBcfg.h" update_enabled="true"/>
             <file path="generate/include/Soc_Ips.h" update_enabled="true"/>
             <file path="generate/include/System_Ip_Cfg.h" update_enabled="true"/>
             <file path="generate/include/System_Ip_CfgDefines.h" update_enabled="true"/>
@@ -551,9 +594,15 @@
             <file path="generate/src/FlexCAN_Ip_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Flexio_Mcl_Ip_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Flexio_Pwm_Ip_PBcfg.c" update_enabled="true"/>
+            <file path="generate/src/Ftm_Gpt_Ip_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Ftm_Pwm_Ip_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Ftm_Qdec_Ip_PBcfg.c" update_enabled="true"/>
+            <file path="generate/src/Gpt_Cfg.c" update_enabled="true"/>
+            <file path="generate/src/Gpt_Ipw_PBcfg.c" update_enabled="true"/>
+            <file path="generate/src/Gpt_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/IntCtrl_Ip_Cfg.c" update_enabled="true"/>
+            <file path="generate/src/LPit_Gpt_Ip_PBcfg.c" update_enabled="true"/>
+            <file path="generate/src/Lptmr_Gpt_Ip_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Mcu_Cfg.c" update_enabled="true"/>
             <file path="generate/src/Mcu_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Mpu_Ip_Cfg.c" update_enabled="true"/>
@@ -569,6 +618,7 @@
             <file path="generate/src/Pwm_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Ram_Ip_Cfg.c" update_enabled="true"/>
             <file path="generate/src/Ram_Ip_PBcfg.c" update_enabled="true"/>
+            <file path="generate/src/SRtc_Ip_PBcfg.c" update_enabled="true"/>
             <file path="generate/src/Trgmux_Ip_Cfg.c" update_enabled="true"/>
             <file path="generate/src/Trgmux_Ip_PBcfg.c" update_enabled="true"/>
          </generated_project_files>
@@ -764,7 +814,7 @@
                                        <setting name="PortPinDirectionChangeable" value="true"/>
                                        <setting name="PortPinModeChangeable" value="true"/>
                                        <setting name="PortPinId" value="9"/>
-                                       <setting name="PortPinPcr" value="109"/>
+                                       <setting name="PortPinPcr" value="40"/>
                                        <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
                                        <array name="PortPinEcucPartitionRef"/>
                                     </struct>
@@ -776,7 +826,7 @@
                                        <setting name="PortPinDirectionChangeable" value="true"/>
                                        <setting name="PortPinModeChangeable" value="true"/>
                                        <setting name="PortPinId" value="10"/>
-                                       <setting name="PortPinPcr" value="110"/>
+                                       <setting name="PortPinPcr" value="41"/>
                                        <setting name="PortPinInitialMode" value="PORT_GPIO_MODE"/>
                                        <array name="PortPinEcucPartitionRef"/>
                                     </struct>
@@ -1298,6 +1348,22 @@
                                        <setting name="Name" value="McuClockReferencePoint_0"/>
                                        <setting name="McuClockFrequencySelect" value="RUN_SYS_CLK"/>
                                     </struct>
+                                    <struct name="1">
+                                       <setting name="Name" value="LPSPI0_CLK"/>
+                                       <setting name="McuClockFrequencySelect" value="LPSPI0_CLK"/>
+                                    </struct>
+                                    <struct name="2">
+                                       <setting name="Name" value="LPSPI1_CLK"/>
+                                       <setting name="McuClockFrequencySelect" value="LPSPI1_CLK"/>
+                                    </struct>
+                                    <struct name="3">
+                                       <setting name="Name" value="LPSPI2_CLK"/>
+                                       <setting name="McuClockFrequencySelect" value="LPSPI2_CLK"/>
+                                    </struct>
+                                    <struct name="4">
+                                       <setting name="Name" value="Lpit_GPT"/>
+                                       <setting name="McuClockFrequencySelect" value="FIRCDIV2_CLK"/>
+                                    </struct>
                                  </array>
                               </struct>
                            </array>
@@ -1408,10 +1474,10 @@
                         <struct name="CanIfInitCfg">
                            <setting name="Name" value="CanIfInitCfg"/>
                            <array name="CanIfMaxRxPduCfg">
-                              <setting name="0" value="10"/>
+                              <setting name="0" value="12"/>
                            </array>
                            <array name="CanIfMaxTxPduCfg">
-                              <setting name="0" value="10"/>
+                              <setting name="0" value="12"/>
                            </array>
                            <array name="CanIfTxPduCfg">
                               <struct name="0">
@@ -1584,6 +1650,32 @@
                                  </array>
                                  <setting name="CanIfTxPduBufferRef" value="/CanIf/CanIf/CanIfInitCfg/CanIfBufferCfg_0"/>
                               </struct>
+                              <struct name="10">
+                                 <setting name="Name" value="CanIfTxPduCfg_10"/>
+                                 <array name="CanIfTxPduCanId">
+                                    <setting name="0" value="10"/>
+                                 </array>
+                                 <array name="CanIfTxPduCanIdType">
+                                    <setting name="0" value="STANDARD_CAN"/>
+                                 </array>
+                                 <setting name="CanIfTxPduId" value="10"/>
+                                 <array name="CanIfTxPduUserTxConfirmationName"/>
+                                 <array name="CanIfTxPduUserTxConfirmationUL"/>
+                                 <setting name="CanIfTxPduBufferRef" value="/CanIf/CanIf/CanIfInitCfg/CanIfBufferCfg_0"/>
+                              </struct>
+                              <struct name="11">
+                                 <setting name="Name" value="CanIfTxPduCfg_11"/>
+                                 <array name="CanIfTxPduCanId">
+                                    <setting name="0" value="11"/>
+                                 </array>
+                                 <array name="CanIfTxPduCanIdType">
+                                    <setting name="0" value="STANDARD_CAN"/>
+                                 </array>
+                                 <setting name="CanIfTxPduId" value="11"/>
+                                 <array name="CanIfTxPduUserTxConfirmationName"/>
+                                 <array name="CanIfTxPduUserTxConfirmationUL"/>
+                                 <setting name="CanIfTxPduBufferRef" value="/CanIf/CanIf/CanIfInitCfg/CanIfBufferCfg_0"/>
+                              </struct>
                            </array>
                            <array name="CanIfRxPduCfg">
                               <struct name="0">
@@ -1637,6 +1729,110 @@
                                     <setting name="0" value="CDD"/>
                                  </array>
                                  <setting name="CanIfRxPduHrhIdRef" value="/CanIf/CanIf/CanIfInitCfg/CanIfInitHohCfg_0/CanIfHrhCfg_3"/>
+                              </struct>
+                              <struct name="4">
+                                 <setting name="Name" value="CanIfRxPduCfg_4"/>
+                                 <setting name="CanIfRxPduId" value="4"/>
+                                 <array name="CanIfRxPduDataLengthCheck"/>
+                                 <array name="CanIfRxPduDataLength"/>
+                                 <array name="CanIfRxPduUserRxIndicationName">
+                                    <setting name="0" value="CanTp_RxIndication"/>
+                                 </array>
+                                 <array name="CanIfRxPduUserRxIndicationUL">
+                                    <setting name="0" value="CDD"/>
+                                 </array>
+                                 <setting name="CanIfRxPduHrhIdRef" value="/CanIf/CanIf/CanIfInitCfg/CanIfInitHohCfg_0/CanIfHrhCfg_4"/>
+                              </struct>
+                              <struct name="5">
+                                 <setting name="Name" value="CanIfRxPduCfg_5"/>
+                                 <setting name="CanIfRxPduId" value="5"/>
+                                 <array name="CanIfRxPduDataLengthCheck"/>
+                                 <array name="CanIfRxPduDataLength"/>
+                                 <array name="CanIfRxPduUserRxIndicationName">
+                                    <setting name="0" value="CanTp_RxIndication"/>
+                                 </array>
+                                 <array name="CanIfRxPduUserRxIndicationUL">
+                                    <setting name="0" value="CDD"/>
+                                 </array>
+                                 <setting name="CanIfRxPduHrhIdRef" value="/CanIf/CanIf/CanIfInitCfg/CanIfInitHohCfg_0/CanIfHrhCfg_5"/>
+                              </struct>
+                              <struct name="6">
+                                 <setting name="Name" value="CanIfRxPduCfg_6"/>
+                                 <setting name="CanIfRxPduId" value="6"/>
+                                 <array name="CanIfRxPduDataLengthCheck"/>
+                                 <array name="CanIfRxPduDataLength"/>
+                                 <array name="CanIfRxPduUserRxIndicationName">
+                                    <setting name="0" value="CanTp_RxIndication"/>
+                                 </array>
+                                 <array name="CanIfRxPduUserRxIndicationUL">
+                                    <setting name="0" value="CDD"/>
+                                 </array>
+                                 <setting name="CanIfRxPduHrhIdRef" value="/CanIf/CanIf/CanIfInitCfg/CanIfInitHohCfg_0/CanIfHrhCfg_6"/>
+                              </struct>
+                              <struct name="7">
+                                 <setting name="Name" value="CanIfRxPduCfg_7"/>
+                                 <setting name="CanIfRxPduId" value="7"/>
+                                 <array name="CanIfRxPduDataLengthCheck"/>
+                                 <array name="CanIfRxPduDataLength"/>
+                                 <array name="CanIfRxPduUserRxIndicationName">
+                                    <setting name="0" value="CanTp_RxIndication"/>
+                                 </array>
+                                 <array name="CanIfRxPduUserRxIndicationUL">
+                                    <setting name="0" value="CDD"/>
+                                 </array>
+                                 <setting name="CanIfRxPduHrhIdRef" value="/CanIf/CanIf/CanIfInitCfg/CanIfInitHohCfg_0/CanIfHrhCfg_7"/>
+                              </struct>
+                              <struct name="8">
+                                 <setting name="Name" value="CanIfRxPduCfg_8"/>
+                                 <setting name="CanIfRxPduId" value="8"/>
+                                 <array name="CanIfRxPduDataLengthCheck"/>
+                                 <array name="CanIfRxPduDataLength"/>
+                                 <array name="CanIfRxPduUserRxIndicationName">
+                                    <setting name="0" value="CanTp_RxIndication"/>
+                                 </array>
+                                 <array name="CanIfRxPduUserRxIndicationUL">
+                                    <setting name="0" value="CDD"/>
+                                 </array>
+                                 <setting name="CanIfRxPduHrhIdRef" value="/CanIf/CanIf/CanIfInitCfg/CanIfInitHohCfg_0/CanIfHrhCfg_8"/>
+                              </struct>
+                              <struct name="9">
+                                 <setting name="Name" value="CanIfRxPduCfg_9"/>
+                                 <setting name="CanIfRxPduId" value="9"/>
+                                 <array name="CanIfRxPduDataLengthCheck"/>
+                                 <array name="CanIfRxPduDataLength"/>
+                                 <array name="CanIfRxPduUserRxIndicationName">
+                                    <setting name="0" value="CanTp_RxIndication"/>
+                                 </array>
+                                 <array name="CanIfRxPduUserRxIndicationUL">
+                                    <setting name="0" value="CDD"/>
+                                 </array>
+                                 <setting name="CanIfRxPduHrhIdRef" value="/CanIf/CanIf/CanIfInitCfg/CanIfInitHohCfg_0/CanIfHrhCfg_9"/>
+                              </struct>
+                              <struct name="10">
+                                 <setting name="Name" value="CanIfRxPduCfg_10"/>
+                                 <setting name="CanIfRxPduId" value="10"/>
+                                 <array name="CanIfRxPduDataLengthCheck"/>
+                                 <array name="CanIfRxPduDataLength"/>
+                                 <array name="CanIfRxPduUserRxIndicationName">
+                                    <setting name="0" value="CanTp_RxIndication"/>
+                                 </array>
+                                 <array name="CanIfRxPduUserRxIndicationUL">
+                                    <setting name="0" value="CDD"/>
+                                 </array>
+                                 <setting name="CanIfRxPduHrhIdRef" value="/CanIf/CanIf/CanIfInitCfg/CanIfInitHohCfg_0/CanIfHrhCfg_10"/>
+                              </struct>
+                              <struct name="11">
+                                 <setting name="Name" value="CanIfRxPduCfg_11"/>
+                                 <setting name="CanIfRxPduId" value="11"/>
+                                 <array name="CanIfRxPduDataLengthCheck"/>
+                                 <array name="CanIfRxPduDataLength"/>
+                                 <array name="CanIfRxPduUserRxIndicationName">
+                                    <setting name="0" value="CanTp_RxIndication"/>
+                                 </array>
+                                 <array name="CanIfRxPduUserRxIndicationUL">
+                                    <setting name="0" value="CDD"/>
+                                 </array>
+                                 <setting name="CanIfRxPduHrhIdRef" value="/CanIf/CanIf/CanIfInitCfg/CanIfInitHohCfg_0/CanIfHrhCfg_11"/>
                               </struct>
                            </array>
                            <array name="CanIfBufferCfg">
@@ -1705,6 +1901,16 @@
                                        <setting name="Name" value="CanIfHrhCfg_9"/>
                                        <setting name="CanIfHrhCanCtrlIdRef" value="/CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0"/>
                                        <setting name="CanIfHrhIdSymRef" value="/Can_43_FLEXCAN/Can/CanConfigSet/CanHardwareObject_Rx9"/>
+                                    </struct>
+                                    <struct name="10">
+                                       <setting name="Name" value="CanIfHrhCfg_10"/>
+                                       <setting name="CanIfHrhCanCtrlIdRef" value="/CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0"/>
+                                       <setting name="CanIfHrhIdSymRef" value="/Can_43_FLEXCAN/Can/CanConfigSet/CanHardwareObject_Rx10"/>
+                                    </struct>
+                                    <struct name="11">
+                                       <setting name="Name" value="CanIfHrhCfg_11"/>
+                                       <setting name="CanIfHrhCanCtrlIdRef" value="/CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0"/>
+                                       <setting name="CanIfHrhIdSymRef" value="/Can_43_FLEXCAN/Can/CanConfigSet/CanHardwareObject_Rx11"/>
                                     </struct>
                                  </array>
                               </struct>
@@ -2042,11 +2248,57 @@
                                  <array name="CanTTHardwareObjectTrigger"/>
                               </struct>
                               <struct name="10">
-                                 <setting name="Name" value="CanHardwareObject_Tx0"/>
+                                 <setting name="Name" value="CanHardwareObject_Rx10"/>
                                  <array name="CanFdPaddingValue"/>
                                  <setting name="CanHandleType" value="BASIC"/>
                                  <setting name="CanIdType" value="STANDARD"/>
                                  <setting name="CanObjectId" value="10"/>
+                                 <setting name="CanObjectType" value="RECEIVE"/>
+                                 <array name="CanObjectPayloadLength"/>
+                                 <array name="CanHardwareObjectUsesPolling"/>
+                                 <array name="CanTriggerTransmitEnable"/>
+                                 <setting name="CanControllerRef" value="/Can_43_FLEXCAN/Can/CanConfigSet/CanController_0"/>
+                                 <array name="CanMainFunctionRWPeriodRef"/>
+                                 <array name="CanHwObjectUsesBlock"/>
+                                 <setting name="CanHwObjectCount" value="1"/>
+                                 <array name="CanHwFilter">
+                                    <struct name="0">
+                                       <setting name="Name" value="Can_aHwFilter_Object_0"/>
+                                       <setting name="CanHwFilterCode" value="10"/>
+                                       <setting name="CanHwFilterMask" value="0x7FF"/>
+                                    </struct>
+                                 </array>
+                                 <array name="CanTTHardwareObjectTrigger"/>
+                              </struct>
+                              <struct name="11">
+                                 <setting name="Name" value="CanHardwareObject_Rx11"/>
+                                 <array name="CanFdPaddingValue"/>
+                                 <setting name="CanHandleType" value="BASIC"/>
+                                 <setting name="CanIdType" value="STANDARD"/>
+                                 <setting name="CanObjectId" value="11"/>
+                                 <setting name="CanObjectType" value="RECEIVE"/>
+                                 <array name="CanObjectPayloadLength"/>
+                                 <array name="CanHardwareObjectUsesPolling"/>
+                                 <array name="CanTriggerTransmitEnable"/>
+                                 <setting name="CanControllerRef" value="/Can_43_FLEXCAN/Can/CanConfigSet/CanController_0"/>
+                                 <array name="CanMainFunctionRWPeriodRef"/>
+                                 <array name="CanHwObjectUsesBlock"/>
+                                 <setting name="CanHwObjectCount" value="1"/>
+                                 <array name="CanHwFilter">
+                                    <struct name="0">
+                                       <setting name="Name" value="Can_aHwFilter_Object_0"/>
+                                       <setting name="CanHwFilterCode" value="11"/>
+                                       <setting name="CanHwFilterMask" value="0x7FF"/>
+                                    </struct>
+                                 </array>
+                                 <array name="CanTTHardwareObjectTrigger"/>
+                              </struct>
+                              <struct name="12">
+                                 <setting name="Name" value="CanHardwareObject_Tx0"/>
+                                 <array name="CanFdPaddingValue"/>
+                                 <setting name="CanHandleType" value="BASIC"/>
+                                 <setting name="CanIdType" value="STANDARD"/>
+                                 <setting name="CanObjectId" value="12"/>
                                  <setting name="CanObjectType" value="TRANSMIT"/>
                                  <array name="CanObjectPayloadLength"/>
                                  <array name="CanHardwareObjectUsesPolling"/>
@@ -2189,6 +2441,27 @@
                                     <setting name="IsrPriority" value="0"/>
                                     <setting name="IsrHandler" value="CAN0_ORED_0_15_MB_IRQHandler"/>
                                  </struct>
+                                 <struct name="1">
+                                    <setting name="Name" value="PlatformIsrConfig_1"/>
+                                    <setting name="IsrName" value="DMA0_IRQn"/>
+                                    <setting name="IsrEnabled" value="true"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                    <setting name="IsrHandler" value="Dma0_Ch0_IRQHandler"/>
+                                 </struct>
+                                 <struct name="2">
+                                    <setting name="Name" value="PlatformIsrConfig_2"/>
+                                    <setting name="IsrName" value="DMA1_IRQn"/>
+                                    <setting name="IsrEnabled" value="false"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                    <setting name="IsrHandler" value="Dma0_Ch1_IRQHandler"/>
+                                 </struct>
+                                 <struct name="3">
+                                    <setting name="Name" value="PlatformIsrConfig_3"/>
+                                    <setting name="IsrName" value="DMA2_IRQn"/>
+                                    <setting name="IsrEnabled" value="true"/>
+                                    <setting name="IsrPriority" value="0"/>
+                                    <setting name="IsrHandler" value="Dma0_Ch2_IRQHandler"/>
+                                 </struct>
                               </array>
                               <array name="PlatformNvicEcucPartitionRef"/>
                            </struct>
@@ -2225,6 +2498,34 @@
                                     <struct name="0">
                                        <setting name="Name" value="LedBlue"/>
                                        <setting name="DioChannelId" value="0"/>
+                                       <array name="DioChannelEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="1">
+                                       <setting name="Name" value="MotorB_In1"/>
+                                       <setting name="DioChannelId" value="8"/>
+                                       <array name="DioChannelEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="2">
+                                       <setting name="Name" value="MotorB_In2"/>
+                                       <setting name="DioChannelId" value="9"/>
+                                       <array name="DioChannelEcucPartitionRef"/>
+                                    </struct>
+                                 </array>
+                                 <array name="DioChannelGroup"/>
+                                 <array name="DioPortEcucPartitionRef"/>
+                              </struct>
+                              <struct name="1">
+                                 <setting name="Name" value="DioPort_1"/>
+                                 <setting name="DioPortId" value="2"/>
+                                 <array name="DioChannel">
+                                    <struct name="0">
+                                       <setting name="Name" value="MotorA_In1"/>
+                                       <setting name="DioChannelId" value="8"/>
+                                       <array name="DioChannelEcucPartitionRef"/>
+                                    </struct>
+                                    <struct name="1">
+                                       <setting name="Name" value="MotorA_In2"/>
+                                       <setting name="DioChannelId" value="9"/>
                                        <array name="DioChannelEcucPartitionRef"/>
                                     </struct>
                                  </array>
@@ -2376,7 +2677,9 @@
                                  <setting name="Name" value="PwmChannel_Motor1"/>
                                  <setting name="PwmChannelId" value="1"/>
                                  <setting name="PwmHwChannel" value="/Pwm/Pwm/PwmChannelConfigSet/Ftm_Instance_1/PwmFtmCh_0"/>
-                                 <array name="PwmChannelClass"/>
+                                 <array name="PwmChannelClass">
+                                    <setting name="0" value="PWM_VARIABLE_PERIOD"/>
+                                 </array>
                                  <setting name="PwmPeriodInTicks" value="true"/>
                                  <setting name="PwmPeriodDefault" value="1"/>
                                  <setting name="PwmDutycycleDefault" value="16384"/>
@@ -2390,7 +2693,9 @@
                                  <setting name="Name" value="PwmChannel_Motor2"/>
                                  <setting name="PwmChannelId" value="2"/>
                                  <setting name="PwmHwChannel" value="/Pwm/Pwm/PwmChannelConfigSet/Ftm_Instance_1/PwmFtmCh_1"/>
-                                 <array name="PwmChannelClass"/>
+                                 <array name="PwmChannelClass">
+                                    <setting name="0" value="PWM_VARIABLE_PERIOD"/>
+                                 </array>
                                  <setting name="PwmPeriodInTicks" value="true"/>
                                  <setting name="PwmPeriodDefault" value="1"/>
                                  <setting name="PwmDutycycleDefault" value="16384"/>
@@ -2490,7 +2795,7 @@
                               </struct>
                               <struct name="1">
                                  <setting name="Name" value="Ftm_Instance_1"/>
-                                 <setting name="PwmHwInstance" value="Ftm_2"/>
+                                 <setting name="PwmHwInstance" value="Ftm_3"/>
                                  <struct name="PwmFtmClkCfg">
                                     <setting name="Name" value="PwmFtmClkCfg"/>
                                     <setting name="PwmFtmClockSource" value="System_clock"/>
@@ -2550,7 +2855,7 @@
                                  <array name="PwmFtmCh">
                                     <struct name="0">
                                        <setting name="Name" value="PwmFtmCh_0"/>
-                                       <setting name="PwmFtmChId" value="CH_4"/>
+                                       <setting name="PwmFtmChId" value="CH_0"/>
                                        <setting name="PwmFtmChPulseType" value="High_true_pulse"/>
                                        <setting name="PwmFtmChDutyCycleDither" value="0"/>
                                        <setting name="PwmFtmChPwmOutputEnable" value="true"/>
@@ -2573,7 +2878,7 @@
                                     </struct>
                                     <struct name="1">
                                        <setting name="Name" value="PwmFtmCh_1"/>
-                                       <setting name="PwmFtmChId" value="CH_5"/>
+                                       <setting name="PwmFtmChId" value="CH_1"/>
                                        <setting name="PwmFtmChPulseType" value="High_true_pulse"/>
                                        <setting name="PwmFtmChDutyCycleDither" value="0"/>
                                        <setting name="PwmFtmChPwmOutputEnable" value="true"/>
@@ -2605,12 +2910,12 @@
                               </struct>
                               <struct name="1">
                                  <setting name="Name" value="PwmHwResourceConfig_1"/>
-                                 <setting name="PwmHwResourceId" value="FTM_2_CH_4"/>
+                                 <setting name="PwmHwResourceId" value="FTM_3_CH_0"/>
                                  <setting name="PwmIsrEnable" value="true"/>
                               </struct>
                               <struct name="2">
                                  <setting name="Name" value="PwmHwResourceConfig_2"/>
-                                 <setting name="PwmHwResourceId" value="FTM_2_CH_5"/>
+                                 <setting name="PwmHwResourceId" value="FTM_3_CH_1"/>
                                  <setting name="PwmIsrEnable" value="true"/>
                               </struct>
                            </array>
@@ -3100,6 +3405,366 @@
                            <setting name="SwPatchVersion" value="0"/>
                            <array name="VendorApiInfix"/>
                            <setting name="VendorId" value="43"/>
+                        </struct>
+                     </config_set>
+                  </instance>
+                  <instance name="Gpt" uuid="c1b39b2a-2e67-4c73-8854-faa9c9fdec5d" type="Gpt" type_id="Gpt" mode="autosar" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="Gpt">
+                        <setting name="Name" value="Gpt"/>
+                        <struct name="ConfigTimeSupport">
+                           <setting name="POST_BUILD_VARIANT_USED" value="true"/>
+                           <setting name="IMPLEMENTATION_CONFIG_VARIANT" value="VARIANT-PRE-COMPILE"/>
+                        </struct>
+                        <struct name="GptChannelConfigSet">
+                           <setting name="Name" value="GptChannelConfigSet"/>
+                           <array name="GptChannelConfiguration">
+                              <struct name="0">
+                                 <setting name="Name" value="GptChannelConfiguration_0"/>
+                                 <setting name="GptChannelId" value="0"/>
+                                 <setting name="GptHwIp" value="LPIT"/>
+                                 <setting name="GptModuleRef" value="/Gpt/Gpt/GptChannelConfigSet/Lpit_0/LpitChannel_0"/>
+                                 <setting name="GptChannelMode" value="GPT_CH_MODE_CONTINUOUS"/>
+                                 <setting name="GptChannelClkSrcRef" value="/Gpt/Gpt/GptDriverConfiguration/GptClockReferencePoint_0"/>
+                                 <setting name="GptChannelTickValueMax" value="4294967295"/>
+                                 <setting name="GptEnableWakeup" value="false"/>
+                                 <array name="GptNotification">
+                                    <setting name="0" value="Gpt_LpitNotification"/>
+                                 </array>
+                                 <array name="GptChannelEcucPartitionRef"/>
+                                 <array name="GptWakeupConfiguration"/>
+                              </struct>
+                           </array>
+                           <array name="GptLpit">
+                              <struct name="0">
+                                 <setting name="Name" value="Lpit_0"/>
+                                 <setting name="GptLpitModule" value="LPIT_0"/>
+                                 <setting name="LpitFreezeEnable" value="false"/>
+                                 <setting name="LpitDozeEnable" value="false"/>
+                                 <array name="GptLpitChannels">
+                                    <struct name="0">
+                                       <setting name="Name" value="LpitChannel_0"/>
+                                       <setting name="GptLpitChannel" value="CH_0"/>
+                                       <setting name="ChainMode" value="false"/>
+                                       <setting name="LPitExternalTrigger" value="false"/>
+                                       <setting name="LPitReloadOnTrigger" value="false"/>
+                                       <setting name="LPitStopOnInterrupt" value="false"/>
+                                       <setting name="LPitStartOnTrigger" value="false"/>
+                                       <array name="LPitTriggerChannels"/>
+                                    </struct>
+                                 </array>
+                              </struct>
+                           </array>
+                           <array name="GptLptmr"/>
+                           <array name="GptFtm"/>
+                           <array name="GptSRtc"/>
+                        </struct>
+                        <array name="GptHwConfiguration">
+                           <struct name="0">
+                              <setting name="Name" value="GptHwConfiguration_0"/>
+                              <setting name="GptIsrHwId" value="LPIT_0_CH_0"/>
+                              <setting name="GptIsrEnable" value="true"/>
+                              <setting name="GptChannelIsUsed" value="true"/>
+                           </struct>
+                           <struct name="1">
+                              <setting name="Name" value="GptHwConfiguration_1"/>
+                              <setting name="GptIsrHwId" value="LPIT_0_CH_1"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="2">
+                              <setting name="Name" value="GptHwConfiguration_2"/>
+                              <setting name="GptIsrHwId" value="LPIT_0_CH_2"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="3">
+                              <setting name="Name" value="GptHwConfiguration_3"/>
+                              <setting name="GptIsrHwId" value="LPIT_0_CH_3"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="4">
+                              <setting name="Name" value="GptHwConfiguration_4"/>
+                              <setting name="GptIsrHwId" value="FTM_0_CH_0"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="5">
+                              <setting name="Name" value="GptHwConfiguration_5"/>
+                              <setting name="GptIsrHwId" value="FTM_0_CH_1"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="6">
+                              <setting name="Name" value="GptHwConfiguration_6"/>
+                              <setting name="GptIsrHwId" value="FTM_0_CH_2"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="7">
+                              <setting name="Name" value="GptHwConfiguration_7"/>
+                              <setting name="GptIsrHwId" value="FTM_0_CH_3"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="8">
+                              <setting name="Name" value="GptHwConfiguration_8"/>
+                              <setting name="GptIsrHwId" value="FTM_0_CH_4"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="9">
+                              <setting name="Name" value="GptHwConfiguration_9"/>
+                              <setting name="GptIsrHwId" value="FTM_0_CH_5"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="10">
+                              <setting name="Name" value="GptHwConfiguration_10"/>
+                              <setting name="GptIsrHwId" value="FTM_0_CH_6"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="11">
+                              <setting name="Name" value="GptHwConfiguration_11"/>
+                              <setting name="GptIsrHwId" value="FTM_0_CH_7"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="12">
+                              <setting name="Name" value="GptHwConfiguration_12"/>
+                              <setting name="GptIsrHwId" value="FTM_1_CH_0"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="13">
+                              <setting name="Name" value="GptHwConfiguration_13"/>
+                              <setting name="GptIsrHwId" value="FTM_1_CH_1"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="14">
+                              <setting name="Name" value="GptHwConfiguration_14"/>
+                              <setting name="GptIsrHwId" value="FTM_1_CH_2"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="15">
+                              <setting name="Name" value="GptHwConfiguration_15"/>
+                              <setting name="GptIsrHwId" value="FTM_1_CH_3"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="16">
+                              <setting name="Name" value="GptHwConfiguration_16"/>
+                              <setting name="GptIsrHwId" value="FTM_1_CH_4"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="17">
+                              <setting name="Name" value="GptHwConfiguration_17"/>
+                              <setting name="GptIsrHwId" value="FTM_1_CH_5"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="18">
+                              <setting name="Name" value="GptHwConfiguration_18"/>
+                              <setting name="GptIsrHwId" value="FTM_1_CH_6"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="19">
+                              <setting name="Name" value="GptHwConfiguration_19"/>
+                              <setting name="GptIsrHwId" value="FTM_1_CH_7"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="20">
+                              <setting name="Name" value="GptHwConfiguration_20"/>
+                              <setting name="GptIsrHwId" value="FTM_2_CH_0"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="21">
+                              <setting name="Name" value="GptHwConfiguration_21"/>
+                              <setting name="GptIsrHwId" value="FTM_2_CH_1"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="22">
+                              <setting name="Name" value="GptHwConfiguration_22"/>
+                              <setting name="GptIsrHwId" value="FTM_2_CH_2"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="23">
+                              <setting name="Name" value="GptHwConfiguration_23"/>
+                              <setting name="GptIsrHwId" value="FTM_2_CH_3"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="24">
+                              <setting name="Name" value="GptHwConfiguration_24"/>
+                              <setting name="GptIsrHwId" value="FTM_2_CH_4"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="25">
+                              <setting name="Name" value="GptHwConfiguration_25"/>
+                              <setting name="GptIsrHwId" value="FTM_2_CH_5"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="26">
+                              <setting name="Name" value="GptHwConfiguration_26"/>
+                              <setting name="GptIsrHwId" value="FTM_2_CH_6"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="27">
+                              <setting name="Name" value="GptHwConfiguration_27"/>
+                              <setting name="GptIsrHwId" value="FTM_2_CH_7"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="28">
+                              <setting name="Name" value="GptHwConfiguration_28"/>
+                              <setting name="GptIsrHwId" value="FTM_3_CH_0"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="29">
+                              <setting name="Name" value="GptHwConfiguration_29"/>
+                              <setting name="GptIsrHwId" value="FTM_3_CH_1"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="30">
+                              <setting name="Name" value="GptHwConfiguration_30"/>
+                              <setting name="GptIsrHwId" value="FTM_3_CH_2"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="31">
+                              <setting name="Name" value="GptHwConfiguration_31"/>
+                              <setting name="GptIsrHwId" value="FTM_3_CH_3"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="32">
+                              <setting name="Name" value="GptHwConfiguration_32"/>
+                              <setting name="GptIsrHwId" value="FTM_3_CH_4"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="33">
+                              <setting name="Name" value="GptHwConfiguration_33"/>
+                              <setting name="GptIsrHwId" value="FTM_3_CH_5"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="34">
+                              <setting name="Name" value="GptHwConfiguration_34"/>
+                              <setting name="GptIsrHwId" value="FTM_3_CH_6"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="35">
+                              <setting name="Name" value="GptHwConfiguration_35"/>
+                              <setting name="GptIsrHwId" value="FTM_3_CH_7"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="36">
+                              <setting name="Name" value="GptHwConfiguration_36"/>
+                              <setting name="GptIsrHwId" value="LPTMR_0_CH_0"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="37">
+                              <setting name="Name" value="GptHwConfiguration_37"/>
+                              <setting name="GptIsrHwId" value="SRTC_0_CH_0"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="38">
+                              <setting name="Name" value="GptHwConfiguration_38"/>
+                              <setting name="GptIsrHwId" value="FTM_0_PREDEF"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="39">
+                              <setting name="Name" value="GptHwConfiguration_39"/>
+                              <setting name="GptIsrHwId" value="FTM_1_PREDEF"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="40">
+                              <setting name="Name" value="GptHwConfiguration_40"/>
+                              <setting name="GptIsrHwId" value="FTM_2_PREDEF"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                           <struct name="41">
+                              <setting name="Name" value="GptHwConfiguration_41"/>
+                              <setting name="GptIsrHwId" value="FTM_3_PREDEF"/>
+                              <setting name="GptIsrEnable" value="false"/>
+                              <setting name="GptChannelIsUsed" value="false"/>
+                           </struct>
+                        </array>
+                        <struct name="GptConfigurationOfOptApiServices">
+                           <setting name="Name" value="GptConfigurationOfOptApiServices"/>
+                           <setting name="GptDeinitApi" value="true"/>
+                           <setting name="GptEnableDisableNotificationApi" value="true"/>
+                           <setting name="GptTimeElapsedApi" value="false"/>
+                           <setting name="GptTimeRemainingApi" value="true"/>
+                           <setting name="GptVersionInfoApi" value="false"/>
+                           <setting name="GptWakeupFunctionalityApi" value="false"/>
+                           <setting name="GptPredefTimerFunctionalityApi" value="false"/>
+                        </struct>
+                        <struct name="GptAutosarExt">
+                           <setting name="Name" value="GptAutosarExt"/>
+                           <setting name="GptEnableDualClockMode" value="false"/>
+                           <setting name="GptChangeNextTimeoutValueApi" value="false"/>
+                           <setting name="GptEnableUserModeSupport" value="false"/>
+                           <setting name="ChainModeApi" value="false"/>
+                           <setting name="GptStandbyWakeupSupport" value="false"/>
+                           <setting name="GptEnableTriggers" value="false"/>
+                        </struct>
+                        <struct name="GptDriverConfiguration">
+                           <setting name="Name" value="GptDriverConfiguration"/>
+                           <setting name="GptDevErrorDetect" value="false"/>
+                           <setting name="GptReportWakeupSource" value="false"/>
+                           <setting name="GptMultiPartitionSupport" value="false"/>
+                           <setting name="GptPredefTimer100us32bitEnable" value="false"/>
+                           <setting name="GptPredefTimer1usEnablingGrade" value="GPT_PREDEF_TIMER_1US_DISABLED"/>
+                           <array name="GptEcucPartitionRef"/>
+                           <array name="GptKernelEcucPartitionRef"/>
+                           <array name="GptClockReferencePoint">
+                              <struct name="0">
+                                 <setting name="Name" value="GptClockReferencePoint_0"/>
+                                 <setting name="GptClockReference" value="/Mcu/Mcu/McuModuleConfiguration/McuClockSettingConfig_0/Lpit_GPT"/>
+                              </struct>
+                           </array>
+                        </struct>
+                        <struct name="GptPredefTimerConfiguration">
+                           <setting name="Name" value="GptPredefTimerConfiguration"/>
+                           <array name="GptPredefTimer_1us_16Bit"/>
+                           <array name="GptPredefTimer_1us_24Bit"/>
+                           <array name="GptPredefTimer_1us_32Bit"/>
+                           <array name="GptPredefTimer_100us_32Bit"/>
+                        </struct>
+                        <struct name="CommonPublishedInformation" quick_selection="Default">
+                           <setting name="Name" value="CommonPublishedInformation"/>
+                           <setting name="ArReleaseMajorVersion" value="4"/>
+                           <setting name="ArReleaseMinorVersion" value="7"/>
+                           <setting name="ArReleaseRevisionVersion" value="0"/>
+                           <setting name="ModuleId" value="100"/>
+                           <setting name="SwMajorVersion" value="3"/>
+                           <setting name="SwMinorVersion" value="0"/>
+                           <setting name="SwPatchVersion" value="0"/>
+                           <setting name="VendorId" value="43"/>
+                           <array name="VendorApiInfix"/>
                         </struct>
                      </config_set>
                   </instance>

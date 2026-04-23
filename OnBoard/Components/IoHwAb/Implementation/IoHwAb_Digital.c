@@ -5,7 +5,23 @@
 
 IoHwAb_LockType IoHwAb_DigitalSignal_LedBlue_Locked = IOHWAB_UNLOCKED;
 IoHwAb_LevelType IoHwAb_DigitalSignal_LedBlue_Saved = IOHWAB_LOW;
-const IoHwAb_LevelType IoHwAb_DigitalSignal_LedRed_Default = IOHWAB_LOW;
+const IoHwAb_LevelType IoHwAb_DigitalSignal_LedBlue_Default = IOHWAB_LOW;
+
+IoHwAb_LockType IoHwAb_DigitalSignal_MotorA_In1_Locked = IOHWAB_UNLOCKED;
+IoHwAb_LevelType IoHwAb_DigitalSignal_MotorA_In1_Saved = IOHWAB_LOW;
+const IoHwAb_LevelType IoHwAb_DigitalSignal_MotorA_In1_Default = IOHWAB_LOW;
+
+IoHwAb_LockType IoHwAb_DigitalSignal_MotorA_In2_Locked = IOHWAB_UNLOCKED;
+IoHwAb_LevelType IoHwAb_DigitalSignal_MotorA_In2_Saved = IOHWAB_LOW;
+const IoHwAb_LevelType IoHwAb_DigitalSignal_MotorA_In2_Default = IOHWAB_LOW;
+
+IoHwAb_LockType IoHwAb_DigitalSignal_MotorB_In1_Locked = IOHWAB_UNLOCKED;
+IoHwAb_LevelType IoHwAb_DigitalSignal_MotorB_In1_Saved = IOHWAB_LOW;
+const IoHwAb_LevelType IoHwAb_DigitalSignal_MotorB_In1_Default = IOHWAB_LOW;
+
+IoHwAb_LockType IoHwAb_DigitalSignal_MotorB_In2_Locked = IOHWAB_UNLOCKED;
+IoHwAb_LevelType IoHwAb_DigitalSignal_MotorB_In2_Saved = IOHWAB_LOW;
+const IoHwAb_LevelType IoHwAb_DigitalSignal_MotorB_In2_Default = IOHWAB_LOW;
 
 /*************************************** Local functions ******************************************/
 
@@ -70,6 +86,104 @@ Std_ReturnType IoHwAb_Get_Digital_DigitalSignal_LedBlue(
     *value = IoHwAb_MapFromDioLevel(readLevel);
     status->quality = IOHWAB_GOOD;
 
+    return E_OK;
+}
+
+/********************************* DigitalSignal_Motor_Dir functions *********************************/
+Std_ReturnType IoHwAb_Set_Digital_DigitalSignal_MotorA_In1(IoHwAb_LevelType value, IoHwAb_StatusType *status)
+{
+    Dio_LevelType setLevel;
+
+    IOHWAB_VALIDATE_RETURN((status != NULL_PTR),
+                           IOHWAB_DIGITAL_SET_ID,
+                           IOHWAB_E_PARAM_POINTER,
+                           E_NOT_OK);
+
+    if (IoHwAb_DigitalSignal_MotorA_In1_Locked == IOHWAB_UNLOCKED)
+    {
+        IoHwAb_DigitalSignal_MotorA_In1_Saved = value;
+        setLevel = IoHwAb_MapToDioLevel(value);
+    }
+    else
+    {
+        setLevel = IoHwAb_MapToDioLevel(IoHwAb_DigitalSignal_MotorA_In1_Saved);
+    }
+
+    Dio_WriteChannel(IoHwAb_ConfigPtr->Dio_Channel[IOHWAB_SIGNAL_DIGITALSIGNAL_MOTORA_IN1], setLevel);
+
+    status->quality = IOHWAB_GOOD;
+    return E_OK;
+}
+Std_ReturnType IoHwAb_Set_Digital_DigitalSignal_MotorA_In2(IoHwAb_LevelType value, IoHwAb_StatusType *status)
+{
+    Dio_LevelType setLevel;
+
+    IOHWAB_VALIDATE_RETURN((status != NULL_PTR),
+                           IOHWAB_DIGITAL_SET_ID,
+                           IOHWAB_E_PARAM_POINTER,
+                           E_NOT_OK);
+
+    if (IoHwAb_DigitalSignal_MotorA_In2_Locked == IOHWAB_UNLOCKED)
+    {
+        IoHwAb_DigitalSignal_MotorA_In2_Saved = value;
+        setLevel = IoHwAb_MapToDioLevel(value);
+    }
+    else
+    {
+        setLevel = IoHwAb_MapToDioLevel(IoHwAb_DigitalSignal_MotorA_In2_Saved);
+    }
+
+    Dio_WriteChannel(IoHwAb_ConfigPtr->Dio_Channel[IOHWAB_SIGNAL_DIGITALSIGNAL_MOTORA_IN2], setLevel);
+
+    status->quality = IOHWAB_GOOD;
+    return E_OK;
+}
+Std_ReturnType IoHwAb_Set_Digital_DigitalSignal_MotorB_In1(IoHwAb_LevelType value, IoHwAb_StatusType *status)
+{
+    Dio_LevelType setLevel;
+
+    IOHWAB_VALIDATE_RETURN((status != NULL_PTR),
+                           IOHWAB_DIGITAL_SET_ID,
+                           IOHWAB_E_PARAM_POINTER,
+                           E_NOT_OK);
+
+    if (IoHwAb_DigitalSignal_MotorB_In1_Locked == IOHWAB_UNLOCKED)
+    {
+        IoHwAb_DigitalSignal_MotorB_In1_Saved = value;
+        setLevel = IoHwAb_MapToDioLevel(value);
+    }
+    else
+    {
+        setLevel = IoHwAb_MapToDioLevel(IoHwAb_DigitalSignal_MotorB_In1_Saved);
+    }
+
+    Dio_WriteChannel(IoHwAb_ConfigPtr->Dio_Channel[IOHWAB_SIGNAL_DIGITALSIGNAL_MOTORB_IN1], setLevel);
+
+    status->quality = IOHWAB_GOOD;
+    return E_OK;
+}
+Std_ReturnType IoHwAb_Set_Digital_DigitalSignal_MotorB_In2(IoHwAb_LevelType value, IoHwAb_StatusType *status)
+{
+    Dio_LevelType setLevel;
+
+    IOHWAB_VALIDATE_RETURN((status != NULL_PTR),
+                           IOHWAB_DIGITAL_SET_ID,
+                           IOHWAB_E_PARAM_POINTER,
+                           E_NOT_OK);
+
+    if (IoHwAb_DigitalSignal_MotorB_In2_Locked == IOHWAB_UNLOCKED)
+    {
+        IoHwAb_DigitalSignal_MotorB_In2_Saved = value;
+        setLevel = IoHwAb_MapToDioLevel(value);
+    }
+    else
+    {
+        setLevel = IoHwAb_MapToDioLevel(IoHwAb_DigitalSignal_MotorB_In2_Saved);
+    }
+
+    Dio_WriteChannel(IoHwAb_ConfigPtr->Dio_Channel[IOHWAB_SIGNAL_DIGITALSIGNAL_MOTORB_IN2], setLevel);
+
+    status->quality = IOHWAB_GOOD;
     return E_OK;
 }
 

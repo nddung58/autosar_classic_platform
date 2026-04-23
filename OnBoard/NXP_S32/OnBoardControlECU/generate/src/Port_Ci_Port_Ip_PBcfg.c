@@ -208,9 +208,9 @@ const Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr[NUM_OF_CONFIGURE
         .digitalFilter         = (boolean)FALSE
     },
     {
-        .portBase              = IP_PORTD,
+        .portBase              = IP_PORTB,
         .gpioBase              = NULL_PTR,
-        .pinPortIdx            = 13,
+        .pinPortIdx            = 8,
         .mux                   = PORT_MUX_ALT2,
         .direction             = PORT_CI_PORT_PIN_OUT,
         .pullConfig            = PORT_INTERNAL_PULL_NOT_ENABLED,
@@ -220,9 +220,9 @@ const Port_Ci_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr[NUM_OF_CONFIGURE
         .digitalFilter         = (boolean)FALSE
     },
     {
-        .portBase              = IP_PORTD,
+        .portBase              = IP_PORTB,
         .gpioBase              = NULL_PTR,
-        .pinPortIdx            = 14,
+        .pinPortIdx            = 9,
         .mux                   = PORT_MUX_ALT2,
         .direction             = PORT_CI_PORT_PIN_OUT,
         .pullConfig            = PORT_INTERNAL_PULL_NOT_ENABLED,
