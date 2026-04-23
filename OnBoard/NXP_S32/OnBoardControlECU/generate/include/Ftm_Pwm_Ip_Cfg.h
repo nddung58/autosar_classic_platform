@@ -162,10 +162,10 @@ extern "C"{
 #else
     #error "FTM_0 instance cannot be used by Pwm. Instance locked by another driver!"
 #endif
-#ifndef FTM_2_USED
-    #define FTM_2_USED
+#ifndef FTM_3_USED
+    #define FTM_3_USED
 #else
-    #error "FTM_2 instance cannot be used by Pwm. Instance locked by another driver!"
+    #error "FTM_3 instance cannot be used by Pwm. Instance locked by another driver!"
 #endif
 
 /* FTM module features */
@@ -203,8 +203,8 @@ extern "C"{
 
 #define FTM_PWM_IP_0_OVF_RELOAD_ISR_USED
 #define FTM_PWM_IP_0_CH_0_CH_1_ISR_USED
-#define FTM_PWM_IP_2_OVF_RELOAD_ISR_USED
-#define FTM_PWM_IP_2_CH_4_CH_5_ISR_USED
+#define FTM_PWM_IP_3_OVF_RELOAD_ISR_USED
+#define FTM_PWM_IP_3_CH_0_CH_1_ISR_USED
 
 #define FTM_PWM_IP_FAULT_NUMBER_CHANNELS                  (4U)
 

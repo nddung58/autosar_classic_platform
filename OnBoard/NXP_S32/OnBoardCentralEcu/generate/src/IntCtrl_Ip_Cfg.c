@@ -69,10 +69,11 @@ extern "C" {
 /* List of configurations for interrupts  */
 static const IntCtrl_Ip_IrqConfigType aIrqConfiguration[] = {
     {CAN0_ORed_0_15_MB_IRQn, (boolean)TRUE, 0U, &CAN0_ORED_0_15_MB_IRQHandler},
+    {LPIT0_Ch0_IRQn, (boolean)TRUE, 15U, &LPIT_0_CH_0_ISR},
 };
 /* Configuration structure for interrupt controller */
 const IntCtrl_Ip_CtrlConfigType intCtrlConfig = {
-    1U,
+    2U,
     aIrqConfiguration
 };
 #define PLATFORM_STOP_SEC_CONFIG_DATA_UNSPECIFIED

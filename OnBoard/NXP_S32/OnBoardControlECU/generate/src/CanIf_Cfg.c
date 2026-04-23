@@ -89,7 +89,7 @@ static const CanIf_CanDrvPCConfigType Can_43_FLEXCAN_Driver_Config =
     /* .CanDrvId */
     (uint8)0U,
     /* .NumCanHoh */
-    (uint8)11U,
+    (uint8)13U,
     /* .CanApi */
     &Can_43_FLEXCAN_Driver_P2Func
 };

@@ -35,12 +35,12 @@
 								<option id="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.debugging.format.14143138" name="Debug format" superClass="com.freescale.s32ds.cross.gnu.tool.c.compiler.option.debugging.format" useByScannerDiscovery="true"/>
 								<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.compiler.option.target.libraries.102698473" name="Libraries support" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.compiler.option.target.libraries" useByScannerDiscovery="false" value="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.compiler.option.target.libraries.newlib_nano_noio" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.1808477774" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
+									<listOptionValue builtIn="false" value="../RTD/include"/>
 									<listOptionValue builtIn="false" value="&quot;${PLATFORMSDK_S32K1_S32M24_S32K144_M4F_3.0.0_PATH}/RTD/BaseNXP_TS_T40D2M30I0R0/header&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${PLATFORMSDK_S32K1_S32M24_S32K144_M4F_3.0.0_PATH}/RTD/BaseNXP_TS_T40D2M30I0R0/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${PLATFORMSDK_S32K1_S32M24_S32K144_M4F_3.0.0_PATH}/RTD/Platform_TS_T40D2M30I0R0/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${PLATFORMSDK_S32K1_S32M24_S32K144_M4F_3.0.0_PATH}/RTD/Platform_TS_T40D2M30I0R0/startup/include&quot;"/>
 									<listOptionValue builtIn="false" value="${ProjDirPath}/RTD/include"/>
-									<listOptionValue builtIn="false" value="../RTD/include"/>
 									<listOptionValue builtIn="false" value="${ProjDirPath}/generate/include"/>
 									<listOptionValue builtIn="false" value="&quot;C:\Users\nguye\Projects\autosar_classic_platform\OnBoard\utils&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\Users\nguye\scoop\apps\gcc\current\include&quot;"/>
@@ -50,6 +50,8 @@
 									<listOptionValue builtIn="false" value="&quot;C:\Users\nguye\Projects\autosar_classic_platform\OnBoard\Components\IoHwAb\Implementation&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\Users\nguye\Projects\autosar_classic_platform\OnBoard\Components\PduR\Implementation&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;C:\Users\nguye\Projects\autosar_classic_platform\OnBoard\Components\RTE\Implementation&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Users\nguye\Projects\autosar_classic_platform\OnBoard\Components\CDD_PIDControl\Implementation&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Users\nguye\Projects\autosar_classic_platform\OnBoard\Components\FakeOS&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${ProjDirPath}/board&quot;"/>
 								</option>
 								<option id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.compiler.option.target.mcpu.41681206" name="Arm family" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.compiler.option.target.mcpu" useByScannerDiscovery="true" value="com.nxp.s32ds.cle.arm.mbs.arm32.bare.tool.c.compiler.option.target.mcpu.cortex-m4" valueType="enumerated"/>
@@ -182,17 +184,16 @@
 						</toolChain>
 					</folderInfo>
 					<fileInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.10.2.exe.debug.1533703303.447288975" name="Swc_SafetyManager.h" rcbsApplicability="disable" resourcePath="App/swc/include/Swc_SafetyManager.h" toolsToInvoke=""/>
-					<fileInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.10.2.exe.debug.1533703303.1295569228" name="Swc_SpeedCalculation.h" rcbsApplicability="disable" resourcePath="App/swc/include/Swc_SpeedCalculation.h" toolsToInvoke=""/>
+					<fileInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.10.2.exe.debug.1533703303.1099084378" name="Swc_SteeringWheelAcq.h" rcbsApplicability="disable" resourcePath="App/swc/include/Swc_SteeringWheelAcq.h" toolsToInvoke=""/>
 					<fileInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.10.2.exe.debug.1533703303.1774166279" name="Swc_GearSelector.h" rcbsApplicability="disable" resourcePath="App/swc/include/Swc_GearSelector.h" toolsToInvoke=""/>
 					<fileInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.10.2.exe.debug.1533703303.673416944" name="Swc_PedalAcq.h" rcbsApplicability="disable" resourcePath="App/swc/include/Swc_PedalAcq.h" toolsToInvoke=""/>
+					<fileInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.10.2.exe.debug.1533703303.537573169" name="Swc_ComputeSpeed.h" rcbsApplicability="disable" resourcePath="App/swc/include/Swc_ComputeSpeed.h" toolsToInvoke=""/>
 					<fileInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.10.2.exe.debug.1533703303.55984971" name="Swc_DriveModeMgr.h" rcbsApplicability="disable" resourcePath="App/swc/include/Swc_DriveModeMgr.h" toolsToInvoke=""/>
 					<fileInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.10.2.exe.debug.1533703303.1904424916" name="Swc_BrakeAcq.h" rcbsApplicability="disable" resourcePath="App/swc/include/Swc_BrakeAcq.h" toolsToInvoke=""/>
-					<fileInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.10.2.exe.debug.1533703303.855489229" name="Swc_SpeedCalculation.c" rcbsApplicability="disable" resourcePath="App/swc/src/Swc_SpeedCalculation.c" toolsToInvoke="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.9.2.tool.c.compiler.743678261.1340606824">
-						<tool id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.9.2.tool.c.compiler.743678261.1340606824" name="Standard S32DS C Compiler" superClass="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.9.2.tool.c.compiler.743678261"/>
-					</fileInfo>
+					<fileInfo id="com.nxp.s32ds.cle.arm.mbs.arm32.bare.gnu.10.2.exe.debug.1533703303.589343882" name="Swc_CmdComposer.h" rcbsApplicability="disable" resourcePath="App/swc/include/Swc_CmdComposer.h" toolsToInvoke=""/>
 					<sourceEntries>
-						<entry excluding="swc/src/Swc_SpeedCalculation.c|swc/include/Swc_SpeedCalculation.h|swc/src/Swc_BrakeAcq.c|swc/src/Swc_DriveModeMgr.c|swc/src/Swc_GearSelector.c|swc/src/Swc_PedalAcq.c|swc/src/Swc_SafetyManager.c|swc/include/Swc_DriveModeMgr.h|swc/include/Swc_GearSelector.h|swc/include/Swc_SafetyManager.h|swc/include/Swc_PedalAcq.h|swc/include/Swc_BrakeAcq.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="App"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Components"/>
+						<entry excluding="swc/include/Swc_SteeringWheelAcq.h|swc/src/Swc_SteeringWheelAcq.c|Tasks/Task_EcuCentral_Init.c|Tasks/Task_EcuCentral_10ms.c|swc/src/Swc_ComputeSpeed.c|swc/include/Swc_ComputeSpeed.h|swc/src/Swc_SpeedCalculation.c|swc/include/Swc_SpeedCalculation.h|swc/src/Swc_BrakeAcq.c|swc/src/Swc_DriveModeMgr.c|swc/src/Swc_GearSelector.c|swc/src/Swc_PedalAcq.c|swc/src/Swc_SafetyManager.c|swc/include/Swc_DriveModeMgr.h|swc/include/Swc_GearSelector.h|swc/include/Swc_SafetyManager.h|swc/include/Swc_PedalAcq.h|swc/include/Swc_BrakeAcq.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="App"/>
+						<entry excluding="CDD_SteeringWheel" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Components"/>
 						<entry excluding="Linker_Files|Debugger" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Project_Settings"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="RTD"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="board"/>
@@ -824,7 +825,7 @@
 	<storageModule moduleId="org.eclipse.embsys" parent_project="true" register_architecture="" register_board="---  none ---" register_chip="" register_core="" register_vendor=""/>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="com.nxp.s32ds.cle.uct.core">
-		<sdkComponents>platform.driver.Platform;platform.driver.det;platform.driver.rte_platform;platform.driver.clock;platform.driver.rte_mcu;platform.driver.adc;platform.driver.rte_adc;platform.driver.osif;platform.driver.mcu;platform.driver.ecum;platform.driver.port;platform.driver.rte_port;platform.driver.pwm;platform.driver.rte_pwm;platform.driver.dio;platform.driver.rte_dio;platform.driver.dem;platform.driver.rte_dem;platform.driver.Can_43_FLEXCAN;platform.driver.rte_can;platform.driver.qdec;platform.driver.rte_qdec;platform.driver.mcl;platform.driver.rte_mcl;platform.driver.CanIf;platform.driver.Rm;platform.driver.rte_rm</sdkComponents>
+		<sdkComponents>platform.driver.Platform;platform.driver.det;platform.driver.rte_platform;platform.driver.clock;platform.driver.rte_mcu;platform.driver.adc;platform.driver.rte_adc;platform.driver.osif;platform.driver.mcu;platform.driver.ecum;platform.driver.port;platform.driver.rte_port;platform.driver.pwm;platform.driver.rte_pwm;platform.driver.dio;platform.driver.rte_dio;platform.driver.dem;platform.driver.rte_dem;platform.driver.Can_43_FLEXCAN;platform.driver.rte_can;platform.driver.qdec;platform.driver.rte_qdec;platform.driver.mcl;platform.driver.rte_mcl;platform.driver.CanIf;platform.driver.Rm;platform.driver.rte_rm;platform.driver.gpt;platform.driver.rte_gpt</sdkComponents>
 	</storageModule>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="Release_FLASH">
@@ -848,6 +849,6 @@
 		<COND_TOOLCHAIN_CUSTOM_OPTION/>
 	</storageModule>
 	<storageModule moduleId="com.nxp.s32ds.cle.uct.internal.core.toolchainScriptProfile">
-		<COND_TOOLCHAIN_COMPONENTS_OPTION>COPY=platform.driver.Platform;platform.driver.clock;platform.driver.adc;platform.driver.osif;platform.driver.mcu;platform.driver.ecum;platform.driver.port;platform.driver.pwm;platform.driver.dio;platform.driver.dem;platform.driver.Can_43_FLEXCAN;platform.driver.qdec;platform.driver.mcl;platform.driver.CanIf;platform.driver.Rm</COND_TOOLCHAIN_COMPONENTS_OPTION>
+		<COND_TOOLCHAIN_COMPONENTS_OPTION>COPY=platform.driver.Platform;platform.driver.clock;platform.driver.adc;platform.driver.osif;platform.driver.mcu;platform.driver.ecum;platform.driver.port;platform.driver.pwm;platform.driver.dio;platform.driver.dem;platform.driver.gpt;platform.driver.Can_43_FLEXCAN;platform.driver.qdec;platform.driver.mcl;platform.driver.CanIf;platform.driver.Rm</COND_TOOLCHAIN_COMPONENTS_OPTION>
 	</storageModule>
 </cproject>

@@ -73,6 +73,9 @@ extern const IntCtrl_Ip_CtrlConfigType intCtrlConfig;
  * NOTE: For application specific handlers, these functions must be implemented in the application code!
  */
 extern void CAN0_ORED_0_15_MB_IRQHandler(void);
+extern void Dma0_Ch0_IRQHandler(void);
+extern void Dma0_Ch1_IRQHandler(void);
+extern void Dma0_Ch2_IRQHandler(void);
 #if  (PLATFORM_IP_ENABLE_INT_CTRL == STD_ON)
     #if (INT_CTRL_IP_CORTEXR == STD_ON)
     #if (defined(INT_CTRL_CORE_SPECIFIC_VTABLE) && (INT_CTRL_CORE_SPECIFIC_VTABLE == STD_ON))

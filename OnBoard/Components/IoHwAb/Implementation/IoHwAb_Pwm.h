@@ -14,6 +14,8 @@ extern "C"
 #define IOHWAB_SIGNAL_PWMSIGNAL_MOTOR1 ((IoHwAb_SignalType)1U)
 #define IOHWAB_SIGNAL_PWMSIGNAL_MOTOR2 ((IoHwAb_SignalType)2U)
 
+    void IoHwAb_Pwm_Init(void);
+
     /* PWM specific API */
     Std_ReturnType IoHwAb_Set_Duty_PwmSignal_LedRed(
         IoHwAb_DutyType duty,

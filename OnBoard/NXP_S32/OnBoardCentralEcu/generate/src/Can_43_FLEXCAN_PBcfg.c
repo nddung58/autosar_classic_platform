@@ -171,7 +171,7 @@ extern "C"{
 /**
 *   @brief  Hardware Buffer Address of CanController_0
 */
-static const uint32 Can_au32HwBufferAddr_Ctrl0[11U]=
+static const uint32 Can_au32HwBufferAddr_Ctrl0[13U]=
 {
     (FLEXCAN_0_BASE + (uint32)0x0080U),
     (FLEXCAN_0_BASE + (uint32)0x0090U),
@@ -183,7 +183,9 @@ static const uint32 Can_au32HwBufferAddr_Ctrl0[11U]=
     (FLEXCAN_0_BASE + (uint32)0x00f0U),
     (FLEXCAN_0_BASE + (uint32)0x0100U),
     (FLEXCAN_0_BASE + (uint32)0x0110U),
-    (FLEXCAN_0_BASE + (uint32)0x0120U)
+    (FLEXCAN_0_BASE + (uint32)0x0120U),
+    (FLEXCAN_0_BASE + (uint32)0x0130U),
+    (FLEXCAN_0_BASE + (uint32)0x0140U)
 };
 
 /**
@@ -286,6 +288,26 @@ static const Can_43_FLEXCAN_HwFilterType Can_aHwFilter_Object9[1U]=
         (uint32)0xdffc0000U
     }
 };
+/**
+*   @brief  Hardware Filter of CanHardwareObject_Rx10
+*/
+static const Can_43_FLEXCAN_HwFilterType Can_aHwFilter_Object10[1U]=
+{
+    {
+        (uint32)0x0000000aU,
+        (uint32)0xdffc0000U
+    }
+};
+/**
+*   @brief  Hardware Filter of CanHardwareObject_Rx11
+*/
+static const Can_43_FLEXCAN_HwFilterType Can_aHwFilter_Object11[1U]=
+{
+    {
+        (uint32)0x0000000bU,
+        (uint32)0xdffc0000U
+    }
+};
 
 #define CAN_43_FLEXCAN_STOP_SEC_CONFIG_DATA_32
 #include "Can_43_FLEXCAN_MemMap.h"
@@ -307,6 +329,8 @@ static const uint8 Can_aCtrlOffsetToCtrlIDMap[CAN_43_FLEXCAN_HWCONTROLLER_SUPPOR
 */
 static const uint8 Can_aHwObjIDToCtrlIDMap[CAN_43_FLEXCAN_HWOBJECT_CONFIG_COUNT]=
 {
+    (uint8)0U,
+    (uint8)0U,
     (uint8)0U,
     (uint8)0U,
     (uint8)0U,
@@ -644,14 +668,76 @@ static const Can_43_FLEXCAN_HwObjectConfigType Can_aHwObjectConfig[CAN_43_FLEXCA
         /* Message buffer address */
         &Can_au32HwBufferAddr_Ctrl0[9U]
     },
-    /* CanHardwareObject_Tx0 of CanController_0 */
+    /* CanHardwareObject_Rx10 of CanController_0 */
     {
         /* Hardware Object ID */
         (Can_HwHandleType)10U,
         /* Hardware Object handle type */
-        CAN_43_FLEXCAN_TRANSMIT,
+        CAN_43_FLEXCAN_RECEIVE,
         /* ID Message type */
         CAN_43_FLEXCAN_STANDARD,
+        /* Object uses polling */
+        (boolean)FALSE,
+        /* Object enable trigger transmit */
+        (boolean)FALSE,
+        /* Number of Hw Object used in one Hoh */
+        (uint8)1U,
+        /* MainFunction RW period reference */
+        (uint8)0xFFU,
+        /* Data Payload length */
+        (uint8)8U,
+        /* Padding value */
+        (uint8)0U,
+        /* Hardware Filter Count */
+        (uint8)1U,
+        /* Hw Filter Config */
+        Can_aHwFilter_Object10,
+        /* Message Buffer is RX_NORMAL */
+        CAN_43_FLEXCAN_RX_NORMAL,
+        /* Buffer Index in Message buffer ram */
+        (uint8)10U,
+        /* Message buffer address */
+        &Can_au32HwBufferAddr_Ctrl0[10U]
+    },
+    /* CanHardwareObject_Rx11 of CanController_0 */
+    {
+        /* Hardware Object ID */
+        (Can_HwHandleType)11U,
+        /* Hardware Object handle type */
+        CAN_43_FLEXCAN_RECEIVE,
+        /* ID Message type */
+        CAN_43_FLEXCAN_STANDARD,
+        /* Object uses polling */
+        (boolean)FALSE,
+        /* Object enable trigger transmit */
+        (boolean)FALSE,
+        /* Number of Hw Object used in one Hoh */
+        (uint8)1U,
+        /* MainFunction RW period reference */
+        (uint8)0xFFU,
+        /* Data Payload length */
+        (uint8)8U,
+        /* Padding value */
+        (uint8)0U,
+        /* Hardware Filter Count */
+        (uint8)1U,
+        /* Hw Filter Config */
+        Can_aHwFilter_Object11,
+        /* Message Buffer is RX_NORMAL */
+        CAN_43_FLEXCAN_RX_NORMAL,
+        /* Buffer Index in Message buffer ram */
+        (uint8)11U,
+        /* Message buffer address */
+        &Can_au32HwBufferAddr_Ctrl0[11U]
+    },
+    /* CanHardwareObject_Tx0 of CanController_0 */
+    {
+        /* Hardware Object ID */
+        (Can_HwHandleType)12U,
+        /* Hardware Object handle type */
+        CAN_43_FLEXCAN_TRANSMIT,
+        /* ID Message type */
+        CAN_43_FLEXCAN_EXTENDED,
         /* Object uses polling */
         (boolean)FALSE,
         /* Object enable trigger transmit */
@@ -671,9 +757,9 @@ static const Can_43_FLEXCAN_HwObjectConfigType Can_aHwObjectConfig[CAN_43_FLEXCA
         /* Message Buffer is TX_NORMAL */
         CAN_43_FLEXCAN_TX_NORMAL,
         /* Buffer Index in Message buffer ram */
-        (uint8)10U,
+        (uint8)12U,
         /* Message buffer address */
-        &Can_au32HwBufferAddr_Ctrl0[10U]
+        &Can_au32HwBufferAddr_Ctrl0[12U]
     }
 };
 
@@ -724,7 +810,7 @@ static const Can_43_FLEXCAN_BaudrateConfigType Can_aBaudrateConfig_Ctrl0[1U]=
 /**
 *   @brief  HwObjects pointer structure of CanController_0
 */
-static const Can_43_FLEXCAN_HwObjectConfigType * const Can_apHwObject_Ctrl0[11U]=
+static const Can_43_FLEXCAN_HwObjectConfigType * const Can_apHwObject_Ctrl0[13U]=
 {
     &Can_aHwObjectConfig[0U],
     &Can_aHwObjectConfig[1U],
@@ -736,7 +822,9 @@ static const Can_43_FLEXCAN_HwObjectConfigType * const Can_apHwObject_Ctrl0[11U]
     &Can_aHwObjectConfig[7U],
     &Can_aHwObjectConfig[8U],
     &Can_aHwObjectConfig[9U],
-    &Can_aHwObjectConfig[10U]
+    &Can_aHwObjectConfig[10U],
+    &Can_aHwObjectConfig[11U],
+    &Can_aHwObjectConfig[12U]
 };
 
 CAN_43_FLEXCAN_IPW_EXT
@@ -782,7 +870,7 @@ static const Can_43_FLEXCAN_ControllerConfigType Can_aControllerConfig[CAN_43_FL
         /* Pointer to IPW structure to IP config */
         &Can_43_FLEXCANIpwHwChannelConfig0,
         /* Hw Object reference count */
-        (uint8)11U,
+        (uint8)13U,
         /* Pointer point to Group of Hw Object that refer to Controller */
         Can_apHwObject_Ctrl0
         #if (CAN_43_FLEXCAN_TIMESTAMP_ENABLE == STD_ON)
@@ -807,7 +895,7 @@ const Can_43_FLEXCAN_ConfigType Can_43_FLEXCAN_Config =
     /* Configuration Partition ID */
     (uint32)0U,
     /* The HTH first Index after HRH consecutive */
-    (Can_HwHandleType)10U,
+    (Can_HwHandleType)12U,
     /* Mapping Controller ID to Controller Hw Offset */
     Can_aCtrlOffsetToCtrlIDMap,
     /* Mapping Controller ID to Hardware Object ID */

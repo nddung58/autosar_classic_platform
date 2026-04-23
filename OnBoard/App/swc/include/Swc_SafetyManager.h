@@ -5,7 +5,8 @@
 
 typedef struct
 {
-    uint8 throttlePct;
+    uint8 speed;
+    uint8 pedal;
     uint8 gear;
     uint8 driveMode;
     uint8 brake;

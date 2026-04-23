@@ -17,7 +17,7 @@ typedef struct
 {
     boolean inited;
     ComputeSpeed_InputType input;
-    uint16 rpmTarget;
+    sint16 rpmTarget;
 } Speed_StateType;
 
 void Swc_ComputeSpeed_Init(void);

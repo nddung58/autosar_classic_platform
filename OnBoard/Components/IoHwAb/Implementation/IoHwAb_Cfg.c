@@ -21,16 +21,19 @@ const IoHwAb_ConfigType IoHwAb_Config =
         /* .NumAnalogSignal*/
         (uint8)3,
         /* .NumPwmSignal*/
-        (uint8)3,
+        (uint8)1,
         AdcGroup_0,
         IoHwAb_Dio_Channel,
         IoHwAb_Pwm_Channel};
 
 #elif defined(ECU_CONTROL)
-const Dio_ChannelType IoHwAb_Dio_Channel[1] =
+const Dio_ChannelType IoHwAb_Dio_Channel[5] =
     {
         DioConf_DioChannel_LedBlue,
-};
+        DioConf_DioChannel_MotorA_In1,
+        DioConf_DioChannel_MotorA_In2,
+        DioConf_DioChannel_MotorB_In1,
+        DioConf_DioChannel_MotorB_In2};
 const Pwm_ChannelType IoHwAb_Pwm_Channel[3] =
     {
         PwmChannel_LedRed,
@@ -40,7 +43,7 @@ const Pwm_ChannelType IoHwAb_Pwm_Channel[3] =
 const IoHwAb_ConfigType IoHwAb_Config =
     {
         /* .NumDigitalSignal*/
-        (uint8)1,
+        (uint8)5,
         /* .NumAnalogSignal*/
         (uint8)1,
         /* .NumPwmSignal*/

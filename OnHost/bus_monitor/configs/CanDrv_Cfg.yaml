@@ -1,0 +1,7 @@
+CanDrv:
+  name: CanDrv_0
+  driver: slcan
+  channel: COM4
+  bitrate: 500000
+  timeout: 0.1
+  rx_queue_size: 5000

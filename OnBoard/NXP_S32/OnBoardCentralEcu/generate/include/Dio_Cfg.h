@@ -255,25 +255,36 @@ extern "C" {
 */
 #define DioConf_DioChannel_DriveMode  ((uint16)0x0081U)
 /**
-* @brief          Symbolic name for the channel GearP.
+* @brief          Symbolic name for the channel GearD.
 *
 */
-#define DioConf_DioChannel_GearP  ((uint16)0x008dU)
+#define DioConf_DioChannel_GearD  ((uint16)0x008dU)
 /**
 * @brief          Symbolic name for the channel GearN.
 *
 */
 #define DioConf_DioChannel_GearN  ((uint16)0x008eU)
 /**
-* @brief          Symbolic name for the channel GearD.
-*
-*/
-#define DioConf_DioChannel_GearD  ((uint16)0x008fU)
-/**
 * @brief          Symbolic name for the channel GearR.
 *
 */
-#define DioConf_DioChannel_GearR  ((uint16)0x0090U)
+#define DioConf_DioChannel_GearR  ((uint16)0x008fU)
+/**
+* @brief          Symbolic name for the channel GearP.
+*
+*/
+#define DioConf_DioChannel_GearP  ((uint16)0x0090U)
+/* ---------- DioPort_2 ---------- */
+
+/**
+* @brief          Symbolic name for the port DioPort_2.
+*/
+#define DioConf_DioPort_DioPort_2  ((uint8)0x00U)
+/**
+* @brief          Symbolic name for the channel EncBtn.
+*
+*/
+#define DioConf_DioChannel_EncBtn  ((uint16)0x0007U)
 
 /*=================================================================================================
 *                                             ENUMS

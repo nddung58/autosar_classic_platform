@@ -4,30 +4,44 @@
 #include "IoHwAb.h"
 
 #if defined(ECU_CENTRAL)
+#include "steering_wheel.h"
 #include "Swc_SafetyManager.h"
-#include "Swc_SpeedCalculation.h"
+#include "Swc_ComputeSpeed.h"
+#include "Swc_CmdComposer.h"
 #elif defined(ECU_CONTROL)
+#include "CDD_PIDControl.h"
 #endif
 
 static Rte_RxSignalStatusType Rte_Buffer_ComRx_Status[RTE_CBK_SIG_MAX];
 static Rte_TxSignalStatusType Rte_Buffer_ComTx_Status[RTE_CBK_SIG_MAX];
 
-static uint16 Rte_Buffer_RpmTarget;
+static uint8 Rte_Buffer_LedBlue;
 
 #if defined(ECU_CENTRAL)
-static uint8 Rte_Buffer_LedBlue = 0;
-static uint8 Rte_Buffer_PedalPct = 0;
-static uint8 Rte_Buffer_BrakePct = 0;
-static uint8 Rte_Buffer_DriveMode = 0;
-static uint8 Rte_Buffer_GearSel = 0;
+static sint16 Rte_Buffer_RpmTarget;
+static uint8 Rte_Buffer_PedalPct;
+static uint8 Rte_Buffer_BrakePct;
+static uint8 Rte_Buffer_DriveMode;
+static uint8 Rte_Buffer_GearSel;
+static sint16 Rte_Buffer_SteeringAngle;
+static sint16 Rte_Buffer_WheelAngle;
 
+static sint16 Rte_Buffer_VcuCmdTx_RpmTarget;
 static uint8 Rte_Buffer_VcuCmdTx_PedalThrottle;
 static uint8 Rte_Buffer_VcuCmdTx_BrakeThrottle;
 static uint8 Rte_Buffer_VcuCmdTx_DriveMode;
 static uint8 Rte_Buffer_VcuCmdTx_GearSel;
-static uint16 Rte_Buffer_VcuCmdTx_RpmTarget;
-#elif defined(ECU_CONTROL)
+static sint16 Rte_Buffer_VcuCmdTx_SteeringAngle;
+static sint16 Rte_Buffer_VcuCmdTx_WheelAngle;
 
+// static uint8 Rte_Buffer_Speed;
+
+#elif defined(ECU_CONTROL)
+// static sint16 Rte_Buffer_RpmTarget;
+
+static uint8 Rte_Buffer_Speed;
+
+static uint8 Rte_Buffer_VcuCmdTx_Speed;
 #endif
 
 /* Callback / Notification Functions*/
@@ -168,7 +182,7 @@ Std_ReturnType Rte_Read_LedControl_ComCmd_LedBlueCmd(uint8 *level)
 
 Std_ReturnType Rte_Write_LedControl_ComRsp_LedBlueCmd(uint8 rsp)
 {
-    return (Std_ReturnType)Com_SendSignal(LED_BLUE_RSP, rsp);
+    return (Std_ReturnType)Com_SendSignal(LED_BLUE_RSP, &rsp);
 }
 
 Std_ReturnType Rte_Call_LedControl_Digital_SetLevel(uint8 level)
@@ -179,8 +193,66 @@ Std_ReturnType Rte_Call_LedControl_Digital_SetLevel(uint8 level)
 
     Std_ReturnType ret = IoHwAb_Set_Digital_DigitalSignal_LedBlue(level, &s);
     if (s.quality == IOHWAB_GOOD)
+    {
+        Rte_Buffer_LedBlue = level;
         return ret;
+    }
     return E_NOT_OK;
+}
+
+/* Cmd Composer*/
+Std_ReturnType Rte_Read_CmdComposer_Cmd(CmdComposer_Type *cmd)
+{
+    if (cmd == NULL)
+    {
+        return E_NOT_OK;
+    }
+#if defined(ECU_CENTRAL)
+    cmd->throttlePedal = Rte_Buffer_PedalPct;
+    cmd->throttleBrake = Rte_Buffer_BrakePct;
+    cmd->gear = Rte_Buffer_GearSel;
+    cmd->mode = Rte_Buffer_DriveMode;
+    cmd->steeringAngle = Rte_Buffer_SteeringAngle;
+    cmd->wheelAngle = Rte_Buffer_WheelAngle;
+    cmd->rpmTarget = Rte_Buffer_RpmTarget;
+#endif
+
+
+    return E_OK;
+}
+
+Std_ReturnType Rte_Trigger_CmdComposer_VcuCmdTx(void)
+{
+    Std_ReturnType ret = E_OK;
+    Std_ReturnType op_ret;
+#if defined(ECU_CENTRAL)
+     op_ret = Com_SendSignal(PEDAL_NTF, &Rte_Buffer_VcuCmdTx_PedalThrottle);
+     if (op_ret == E_NOT_OK)
+         ret = E_NOT_OK;
+     op_ret = Com_SendSignal(BRAKE_NTF, &Rte_Buffer_VcuCmdTx_BrakeThrottle);
+     if (op_ret == E_NOT_OK)
+         ret = E_NOT_OK;
+    op_ret = Com_SendSignal(GEAR_NTF, &Rte_Buffer_VcuCmdTx_GearSel);
+    if (op_ret == E_NOT_OK)
+        ret = E_NOT_OK;
+     op_ret = Com_SendSignal(MODE_NTF, &Rte_Buffer_VcuCmdTx_DriveMode);
+     if (op_ret == E_NOT_OK)
+         ret = E_NOT_OK;
+
+     op_ret = Com_SendSignal(STEERING_ANGLE_NTF, &Rte_Buffer_VcuCmdTx_SteeringAngle);
+     if (op_ret == E_NOT_OK)
+         ret = E_NOT_OK;
+
+     op_ret = Com_SendSignal(WHEEL_ANGLE_NTF, &Rte_Buffer_VcuCmdTx_WheelAngle);
+     if (op_ret == E_NOT_OK)
+         ret = E_NOT_OK;
+
+     op_ret = Com_SendSignal(RPM_TARGET_CMD, &Rte_Buffer_VcuCmdTx_RpmTarget);
+     if (op_ret == E_NOT_OK)
+         ret = E_NOT_OK;
+#endif
+
+    return ret;
 }
 
 #if defined(ECU_CENTRAL)
@@ -209,7 +281,7 @@ Std_ReturnType Rte_Read_PedalAcq_PedalOut(uint8 *pct)
 
 Std_ReturnType Rte_Write_PedalAcq_PedalOut(uint8 pct)
 {
-    if (pct >= 0 && pct <= 100)
+    if (pct <= 100)
     {
         Rte_Buffer_PedalPct = pct;
         return E_OK;
@@ -241,7 +313,7 @@ Std_ReturnType Rte_Read_BrakeAcq_BrakeOut(uint8 *pct)
 
 Std_ReturnType Rte_Write_BrakeAcq_BrakeOut(uint8 pct)
 {
-    if (pct >= 0 && pct <= 100)
+    if (pct <= 100)
     {
         Rte_Buffer_BrakePct = pct;
         return E_OK;
@@ -304,19 +376,19 @@ Std_ReturnType Rte_Call_Gear_Digital_ReadGearSel(uint8 *gear)
     }
 
     /* Build bitmask */
-    if (gearP != 0U)
+    if (gearP == 0U)
     {
         mask |= 0x01U;
     }
-    if (gearR != 0U)
+    if (gearR == 0U)
     {
         mask |= 0x02U;
     }
-    if (gearN != 0U)
+    if (gearN == 0U)
     {
         mask |= 0x04U;
     }
-    if (gearD != 0U)
+    if (gearD == 0U)
     {
         mask |= 0x08U;
     }
@@ -395,9 +467,22 @@ Std_ReturnType Rte_Read_SafetyManager_DriveModeOut(uint8 *mode)
     return E_OK;
 }
 
+Std_ReturnType Rte_Read_SafetyManager_ComNtf_Speed(uint8 *speed)
+{
+    if (Rte_Buffer_ComRx_Status[RTE_CBK_SIG_SPEED].updated == FALSE)
+        return E_NOT_OK;
+    Std_ReturnType ret = Com_ReceiveSignal(SPEED_NTF, speed);
+    if (ret == E_OK)
+    {
+        Rte_Buffer_ComRx_Status[RTE_CBK_SIG_SPEED].updated = FALSE;
+        return E_OK;
+    }
+    return E_NOT_OK;
+}
+
 Std_ReturnType Rte_Write_SafetyManager_SafeOut(SafetyType safe)
 {
-    Rte_Buffer_PedalPct = safe.throttlePct;
+    Rte_Buffer_PedalPct = safe.pedal;
     Rte_Buffer_BrakePct = safe.brake;
     Rte_Buffer_DriveMode = safe.driveMode;
     Rte_Buffer_GearSel = safe.gear;
@@ -410,10 +495,10 @@ Std_ReturnType Rte_Read_ComputeSpeed_GetInput(ComputeSpeed_InputType *input)
     if (input == NULL)
         return E_NOT_OK;
 
-    input.throttlePedal = Rte_Buffer_PedalPct;
-    input.throttleBrake = Rte_Buffer_BrakePct;
-    input.gear = Rte_Buffer_GearSel;
-    input.mode = Rte_Buffer_DriveMode;
+    input->throttlePedal = Rte_Buffer_PedalPct;
+    input->throttleBrake = Rte_Buffer_BrakePct;
+    input->gear = Rte_Buffer_GearSel;
+    input->mode = Rte_Buffer_DriveMode;
     return E_OK;
 }
 
@@ -444,34 +529,60 @@ Std_ReturnType Rte_Write_CmdComposer_VcuCmdTx_DriveMode(uint8 mode)
     Rte_Buffer_VcuCmdTx_DriveMode = mode;
     return E_OK;
 }
-Std_ReturnType Rte_Write_CmdComposer_VcuCmdTx_SpeedTarget_rpm(uint16 rpm)
+Std_ReturnType Rte_Write_CmdComposer_VcuCmdTx_SpeedTarget_rpm(sint16 rpm)
 {
     Rte_Buffer_VcuCmdTx_RpmTarget = rpm;
     return E_OK;
 }
 
-Std_ReturnType Rte_Trigger_CmdComposer_VcuCmdTx(void)
+Std_ReturnType Rte_Write_CmdComposer_VcuCmdTx_Steering_Angle(sint16 angle)
 {
-    Std_ReturnType ret = E_OK;
-    Std_ReturnType op_ret;
-    op_ret = Com_SendSignal(PEDAL_NTF, &Rte_Buffer_VcuCmdTx_PedalThrottle);
-    if (op_ret == E_NOT_OK)
-        ret = E_NOT_OK;
-    op_ret = Com_SendSignal(BRAKE_NTF, &Rte_Buffer_VcuCmdTx_BrakeThrottle);
-    if (op_ret == E_NOT_OK)
-        ret = E_NOT_OK;
-    op_ret = Com_SendSignal(GEAR_NTF, &Rte_Buffer_VcuCmdTx_GearSel);
-    if (op_ret == E_NOT_OK)
-        ret = E_NOT_OK;
-    op_ret = Com_SendSignal(MODE_NTF, &Rte_Buffer_VcuCmdTx_DriveMode);
-    if (op_ret == E_NOT_OK)
-        ret = E_NOT_OK;
-    op_ret = Com_SendSignal(RPM_TARGET_CMD, &Rte_Buffer_VcuCmdTx_RpmTarget);
-    if (op_ret == E_NOT_OK)
-        ret = E_NOT_OK;
-
-    return ret;
+    Rte_Buffer_VcuCmdTx_SteeringAngle = angle;
+    return E_OK;
 }
+
+Std_ReturnType Rte_Write_CmdComposer_VcuCmdTx_Wheel_Angle(sint16 angle)
+{
+    Rte_Buffer_VcuCmdTx_WheelAngle = angle;
+    return E_OK;
+}
+
+/* Steering Wheel */
+Std_ReturnType Rte_Call_SteeringWheelAcq_Steering_ReadAngle(sint16 *angle)
+{
+    if (angle == NULL)
+        return E_NOT_OK;
+    return Steering_Wheel_GetAngle(angle);
+}
+
+Std_ReturnType Rte_Read_SteeringWheelAcq_SteeringAngle(sint16 *angle)
+{
+    if (angle == NULL)
+        return E_NOT_OK;
+
+    *angle = Rte_Buffer_SteeringAngle;
+    return E_OK;
+}
+Std_ReturnType Rte_Write_SteeringWheelAcq_SteeringAngle(sint16 angle)
+{
+    Rte_Buffer_SteeringAngle = angle;
+    return E_OK;
+}
+
+Std_ReturnType Rte_Read_SteeringWheelAcq_WheelAngle(sint16 *angle)
+{
+    if (angle == NULL)
+        return E_NOT_OK;
+
+    *angle = Rte_Buffer_WheelAngle;
+    return E_OK;
+}
+Std_ReturnType Rte_Write_SteeringWheelAcq_WheelAngle(sint16 angle)
+{
+    Rte_Buffer_WheelAngle = angle;
+    return E_OK;
+}
+
 #elif defined(ECU_CONTROL)
 /* Motor control */
 Std_ReturnType Rte_Call_MotorControl_PwmMotor1_SetDutty(uint16 dutty)
@@ -489,5 +600,90 @@ Std_ReturnType Rte_Call_MotorControl_PwmMotor2_SetDutty(uint16 dutty)
     if (status.quality == IOHWAB_GOOD)
         return ret;
     return E_NOT_OK;
+}
+
+/* Self balancing*/
+Std_ReturnType Rte_Read_MotorControl_Inputs(sint16 *rpmTarget, sint16 *wheelAngle)
+{
+    if (rpmTarget == NULL || wheelAngle == NULL)
+        return E_NOT_OK;
+
+    return E_OK;
+}
+Std_ReturnType Rte_Call_PIDControl_Process(sint16 rpmTarget, sint16 wheelAngle, sint16 *mPctA, sint16 *mPctB)
+{
+    return PIDControl_Compute(rpmTarget, wheelAngle, mPctA, mPctB);
+}
+Std_ReturnType Rte_Call_MotorControl_MotorA_SetDir(uint8 direction)
+{
+    IoHwAb_StatusType status;
+    Std_ReturnType ret;
+
+    if (direction == 0) // Forward
+    {
+        ret = IoHwAb_Set_Digital_DigitalSignal_MotorA_In1(IOHWAB_HIGH, &status);
+        if (ret != E_OK)
+            return ret;
+
+        ret = IoHwAb_Set_Digital_DigitalSignal_MotorA_In2(IOHWAB_LOW, &status);
+    }
+    else // Reverse
+    {
+        ret = IoHwAb_Set_Digital_DigitalSignal_MotorA_In1(IOHWAB_LOW, &status);
+        if (ret != E_OK)
+            return ret;
+
+        ret = IoHwAb_Set_Digital_DigitalSignal_MotorA_In2(IOHWAB_HIGH, &status);
+    }
+
+    if (status.quality == IOHWAB_GOOD)
+        return ret;
+    return E_NOT_OK;
+}
+Std_ReturnType Rte_Call_MotorControl_MotorB_SetDir(uint8 direction)
+{
+    IoHwAb_StatusType status;
+    Std_ReturnType ret;
+
+    if (direction == 0) // Forward
+    {
+        ret = IoHwAb_Set_Digital_DigitalSignal_MotorB_In1(IOHWAB_HIGH, &status);
+        if (ret != E_OK)
+            return ret;
+
+        ret = IoHwAb_Set_Digital_DigitalSignal_MotorB_In2(IOHWAB_LOW, &status);
+    }
+    else // Reverse
+    {
+        ret = IoHwAb_Set_Digital_DigitalSignal_MotorB_In1(IOHWAB_LOW, &status);
+        if (ret != E_OK)
+            return ret;
+
+        ret = IoHwAb_Set_Digital_DigitalSignal_MotorB_In2(IOHWAB_HIGH, &status);
+    }
+
+    if (status.quality == IOHWAB_GOOD)
+        return ret;
+    return E_NOT_OK;
+}
+
+Std_ReturnType Rte_Call_MotorControl_Pwm(uint16 motorA_duty, uint16 motorB_duty)
+{
+    IoHwAb_StatusType status;
+    Std_ReturnType ret;
+    ret = IoHwAb_Set_Duty_PwmSignal_Motor1(motorA_duty, &status);
+    if (ret != E_OK)
+        return ret;
+    ret = IoHwAb_Set_Duty_PwmSignal_Motor2(motorA_duty, &status);
+    if (status.quality == IOHWAB_GOOD)
+        return ret;
+    return E_NOT_OK;
+}
+
+/* Cmd Composer*/
+Std_ReturnType Rte_Write_CmdComposer_VcuCmdTx_Speed(uint8 speed)
+{
+    Rte_Buffer_VcuCmdTx_Speed = speed;
+    return E_OK;
 }
 #endif

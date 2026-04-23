@@ -100,13 +100,11 @@ extern "C"{
 /*==================================================================================================
 *                                       DEFINES AND MACROS
 ==================================================================================================*/
-#define QDEC_CONFIG_EXT \
-        QDEC_CONFIG_PB \
 
 /**
  *   @brief Pre-compile configuration constants
  */
-#define QDEC_PRECOMPILE_SUPPORT     (STD_OFF)
+#define QDEC_PRECOMPILE_SUPPORT     (STD_ON)
 
 /**
 *   @brief  Switches the Development Error Detection and Notification on or off.
@@ -119,7 +117,7 @@ extern "C"{
 /**
  *   @brief Maximum number of QDEC instances configured
  */
-#define QDEC_MAX_INSTANCE           ((uint8)2U)
+#define QDEC_MAX_INSTANCE           ((uint8)1U)
 #endif
 
 /**
@@ -145,9 +143,6 @@ extern "C"{
 */
 #define QdecInstanceConfig_0                                 (QdecConf_QdecInstanceConfig_QdecInstanceConfig_0)
 #define QdecConf_QdecInstanceConfig_QdecInstanceConfig_0     ((uint8)0U)
-
-#define QdecInstanceConfig_1                                 (QdecConf_QdecInstanceConfig_QdecInstanceConfig_1)
-#define QdecConf_QdecInstanceConfig_QdecInstanceConfig_1     ((uint8)1U)
 
 
 #ifndef QDEC_SET_CLOCK_MODE_API

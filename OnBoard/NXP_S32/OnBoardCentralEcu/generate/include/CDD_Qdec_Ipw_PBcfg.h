@@ -87,7 +87,7 @@ extern "C"{
 #define QDEC_START_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Qdec_MemMap.h"
 
-extern const Qdec_Ipw_ConfigType Qdec_Ipw_Config[2U];
+extern const Qdec_Ipw_ConfigType Qdec_Ipw_Config[1U];
 
 #define QDEC_STOP_SEC_CONFIG_DATA_UNSPECIFIED
 #include "Qdec_MemMap.h"

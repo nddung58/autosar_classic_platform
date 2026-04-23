@@ -39,6 +39,16 @@ Std_ReturnType IoHwAb_Set_Duty_PwmSignal_LedRed(
     status->quality = IOHWAB_GOOD;
     return E_OK;
 }
+
+void IoHwAb_Pwm_Init(void)
+{
+    Pwm_SetPeriodAndDuty(IoHwAb_ConfigPtr->Pwm_Channel[IOHWAB_PWM_LED_RED], DUTTY_CYCLE_MAX, 0x0000U);
+#if defined(ECU_CONTROL)
+    Pwm_SetPeriodAndDuty(IoHwAb_ConfigPtr->Pwm_Channel[IOHWAB_PWM_MOTOR_1], DUTTY_CYCLE_MAX, 0x0000U);
+    Pwm_SetPeriodAndDuty(IoHwAb_ConfigPtr->Pwm_Channel[IOHWAB_PWM_MOTOR_2], DUTTY_CYCLE_MAX, 0x0000U);
+#endif
+}
+
 #if defined(ECU_CONTROL)
 Std_ReturnType IoHwAb_Set_Duty_PwmSignal_Motor1(
     IoHwAb_DutyType duty,
@@ -116,7 +126,7 @@ Std_ReturnType IoHwAb_Set_Duty(
     {
     case IOHWAB_SIGNAL_PWMSIGNAL_LED_RED:
     {
-    	return IoHwAb_Set_Duty_PwmSignal_LedRed(duty, status);
+        return IoHwAb_Set_Duty_PwmSignal_LedRed(duty, status);
     }
 #if defined(ECU_CONTROL)
     case IOHWAB_SIGNAL_PWMSIGNAL_MOTOR1:

@@ -1,0 +1,6 @@
+#ifndef CDD_PID_CONTROL_CFG_H_
+#define CDD_PID_CONTROL_CFG_H_
+
+#define PIDCONTROL_PRECOMPILE_SUPPORT (STD_ON)
+
+#endif

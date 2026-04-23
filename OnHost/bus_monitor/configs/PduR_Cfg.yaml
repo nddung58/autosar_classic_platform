@@ -1,0 +1,3 @@
+RxPdus:
+  - CanId: 0x001
+    PduId: 0x001

@@ -134,6 +134,12 @@ extern "C"{
 /* Symbolic name for CanIfTxPduCfg_9 */
 #define CanIfTxPduCfg_9    ((PduIdType)9U)
 
+/* Symbolic name for CanIfTxPduCfg_10 */
+#define CanIfTxPduCfg_10    ((PduIdType)10U)
+
+/* Symbolic name for CanIfTxPduCfg_11 */
+#define CanIfTxPduCfg_11    ((PduIdType)11U)
+
 /* Symbolic name for CanIfRxPduCfg_0 */
 #define CanIfRxPduCfg_0    ((PduIdType)0U)
 
@@ -145,6 +151,30 @@ extern "C"{
 
 /* Symbolic name for CanIfRxPduCfg_3 */
 #define CanIfRxPduCfg_3    ((PduIdType)3U)
+
+/* Symbolic name for CanIfRxPduCfg_4 */
+#define CanIfRxPduCfg_4    ((PduIdType)4U)
+
+/* Symbolic name for CanIfRxPduCfg_5 */
+#define CanIfRxPduCfg_5    ((PduIdType)5U)
+
+/* Symbolic name for CanIfRxPduCfg_6 */
+#define CanIfRxPduCfg_6    ((PduIdType)6U)
+
+/* Symbolic name for CanIfRxPduCfg_7 */
+#define CanIfRxPduCfg_7    ((PduIdType)7U)
+
+/* Symbolic name for CanIfRxPduCfg_8 */
+#define CanIfRxPduCfg_8    ((PduIdType)8U)
+
+/* Symbolic name for CanIfRxPduCfg_9 */
+#define CanIfRxPduCfg_9    ((PduIdType)9U)
+
+/* Symbolic name for CanIfRxPduCfg_10 */
+#define CanIfRxPduCfg_10    ((PduIdType)10U)
+
+/* Symbolic name for CanIfRxPduCfg_11 */
+#define CanIfRxPduCfg_11    ((PduIdType)11U)
 
 #define CANIF_CONFIG_EXT
 

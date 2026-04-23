@@ -18,7 +18,7 @@ void Swc_GearSelector_Run10ms(void)
 
     Gear_Type g;
 
-    Std_ReturnType ret = Rte_Call_Gear_Digital_ReadGearSel(&g);
+    Std_ReturnType ret = Rte_Call_Gear_Digital_ReadGearSel((uint8*)&g);
 
     if (ret != E_OK)
         return;

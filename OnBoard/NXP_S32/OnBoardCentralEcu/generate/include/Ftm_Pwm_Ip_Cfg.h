@@ -133,7 +133,7 @@ extern "C"{
 #define FTM_PWM_IP_DEV_ERROR_DETECT           (STD_ON)
 
 /** @brief        Switch to enable the notifications feature */
-#define FTM_PWM_IP_NOTIFICATION_SUPPORTED     (STD_OFF)
+#define FTM_PWM_IP_NOTIFICATION_SUPPORTED     (STD_ON)
 
 /** @brief        Switch to enable the reload point notifications feature */
 #define FTM_PWM_IP_RELOAD_NOTIFICATION_SUPPORTED     (STD_OFF)
@@ -196,6 +196,8 @@ extern "C"{
 /** Number of instances of the SIM module. */
 #define FTM_PWM_IP_SIM_INSTANCE_COUNT                  (SIM_INSTANCE_COUNT)
 
+#define FTM_PWM_IP_0_OVF_RELOAD_ISR_USED
+#define FTM_PWM_IP_0_CH_0_CH_1_ISR_USED
 
 #define FTM_PWM_IP_FAULT_NUMBER_CHANNELS                  (4U)
 

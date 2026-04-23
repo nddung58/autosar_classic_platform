@@ -102,7 +102,7 @@ extern "C"{
 #define PWM_START_SEC_CODE
 #include "Pwm_MemMap.h"
 
-
+extern void Pwm_Ipw_FlexTimerNotification(uint8 Channel);
 
 #define PWM_STOP_SEC_CODE
 #include "Pwm_MemMap.h"
@@ -134,9 +134,9 @@ static const Ftm_Pwm_Ip_SyncCfgType Ftm_Pwm_Ip_SyncCfg0 =
 #if (defined(FTM_PWM_IP_HAS_RELOAD_POINT) && (FTM_PWM_IP_HAS_RELOAD_POINT == STD_ON))
     /* LoadPointFreq */              0U,
 #endif
-    /* InverterSync */               FTM_PWM_IP_SYNC_ON_CLK,
+    /* InverterSync */               FTM_PWM_IP_SYNC_DISABLED,
     /* OutRegSync */                 FTM_PWM_IP_SYNC_ON_CLK,
-    /* OutMaskSync */                FTM_PWM_IP_SYNC_ON_CLK,
+    /* OutMaskSync */                FTM_PWM_IP_SYNC_DISABLED,
     /* InitCounterSync */            FTM_PWM_IP_SYNC_ON_TRIGGER,
     /* CounterSync */                FTM_PWM_IP_SYNC_ON_TRIGGER
 };
@@ -149,10 +149,10 @@ static const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_InstCfg0 =
     /* ClkPs */                 FTM_PWM_IP_CLOCK_DIV_1,
     /* AlternateclkPs */        FTM_PWM_IP_CLOCK_DIV_1,
     /* CntMode */               FTM_PWM_IP_EDGE_ALIGNED,
-    /* OverflowIrqEn */         (boolean)FALSE,
+    /* OverflowIrqEn */         (boolean)TRUE,
     /* OverflowCb */            {
-        /* FunctionCallback */      NULL_PTR,
-        /* CbParam */               NULL_PTR
+        /* FunctionCallback */      &Pwm_Ipw_FlexTimerNotification,
+        /* CbParam */               0U
                                 },
 #if (defined(FTM_PWM_IP_HAS_RELOAD_POINT) && (FTM_PWM_IP_HAS_RELOAD_POINT == STD_ON))
     /* ReloadIrqEn */           (boolean)FALSE,
@@ -161,7 +161,7 @@ static const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_InstCfg0 =
         /* CbParam */               NULL_PTR
                                 },
 #endif
-    /* DebugMode */             FTM_PWM_IP_BDM_MODE_00,
+    /* DebugMode */             FTM_PWM_IP_BDM_MODE_11,
     /* WriteProtection */       (boolean)FALSE,
     /* InitTriggerEn */         (boolean)FALSE,
     /* InitTrigMode */          FTM_PWM_IP_INIT_TRIGG_RELOAD_POINT,
@@ -178,7 +178,7 @@ static const Ftm_Pwm_Ip_InstanceCfgType Ftm_Pwm_Ip_InstCfg0 =
     /* FaultIrqEn */            (boolean)FALSE,
 #endif
 #if (defined(FTM_PWM_IP_SIM_AVAILABLE) && (FTM_PWM_IP_SIM_AVAILABLE == STD_ON))
-    /* ObeCtrl */               (boolean)TRUE,
+    /* ObeCtrl */               (boolean)FALSE,
 #endif
     /* SyncCfg */               &Ftm_Pwm_Ip_SyncCfg0
 };
@@ -195,10 +195,10 @@ const Ftm_Pwm_Ip_ChannelConfigType Ftm_Pwm_Ip_I0_Ch0 =
 {
     /* ChannelId */             0U,
     /* ChannelMode */           FTM_PWM_IP_MODE_EDGE_ALIGNED_HIGH,
-    /* ChIrqEn */               (boolean)FALSE,
+    /* ChIrqEn */               (boolean)TRUE,
     /* ChannelCb */             {
-        /* FunctionCallback */      NULL_PTR,
-        /* CbParam */               NULL_PTR
+        /* FunctionCallback */      &Pwm_Ipw_FlexTimerNotification,
+        /* CbParam */               0U
                                 },
     /* ChOutputEn */            (boolean)TRUE,
     /* SwControlEn */           (boolean)FALSE,

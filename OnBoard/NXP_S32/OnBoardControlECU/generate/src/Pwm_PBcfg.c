@@ -158,19 +158,19 @@ static const Pwm_ChannelConfigType Pwm_Channels_PB[PWM_PB_CFG_CHANNELS_COUNT] =
         /** @brief  Channel Id */
         (Pwm_ChannelType)1U,
         /** @brief  Channel class */
-        PWM_FIXED_PERIOD,
+        PWM_VARIABLE_PERIOD,
         /** @brief  Ip channel configuration */
         {
             /** @brief  Hardware Channel Type */
             PWM_CHANNEL_FTM,
             /** @brief  Hardware Channel Configuration Pointer */
-            (const void *)(&Ftm_Pwm_Ip_I2_Ch4),
+            (const void *)(&Ftm_Pwm_Ip_I3_Ch0),
         #if (defined(PWM_FLEXIO_USED) && (PWM_FLEXIO_USED == STD_ON))
             /** @brief  Pointer to the Flexio ip channel configuration structure */
             NULL_PTR,
         #endif
             /** @brief  Hardware Channel Instance ID */
-            (Pwm_IpwInstanceType)FTM_PWM_IP_I2_CH4_CFG,
+            (Pwm_IpwInstanceType)FTM_PWM_IP_I3_CH0_CFG,
             /** @brief The duty cycle of this channel */
             16384U
         },
@@ -183,19 +183,19 @@ static const Pwm_ChannelConfigType Pwm_Channels_PB[PWM_PB_CFG_CHANNELS_COUNT] =
         /** @brief  Channel Id */
         (Pwm_ChannelType)2U,
         /** @brief  Channel class */
-        PWM_FIXED_PERIOD,
+        PWM_VARIABLE_PERIOD,
         /** @brief  Ip channel configuration */
         {
             /** @brief  Hardware Channel Type */
             PWM_CHANNEL_FTM,
             /** @brief  Hardware Channel Configuration Pointer */
-            (const void *)(&Ftm_Pwm_Ip_I2_Ch5),
+            (const void *)(&Ftm_Pwm_Ip_I3_Ch1),
         #if (defined(PWM_FLEXIO_USED) && (PWM_FLEXIO_USED == STD_ON))
             /** @brief  Pointer to the Flexio ip channel configuration structure */
             NULL_PTR,
         #endif
             /** @brief  Hardware Channel Instance ID */
-            (Pwm_IpwInstanceType)FTM_PWM_IP_I2_CH5_CFG,
+            (Pwm_IpwInstanceType)FTM_PWM_IP_I3_CH1_CFG,
             /** @brief The duty cycle of this channel */
             16384U
         },
@@ -221,11 +221,11 @@ static const Pwm_IpwInstanceConfigType Pwm_Instances_PB[PWM_PB_CFG_INSTANCES_COU
     },
     {
         /** @brief  The Id instance configured */
-        2U,
+        3U,
         /** @brief  The type of ip instance configured */
         PWM_INSTANCE_FTM,
         /** @brief  Pointer to the ip instance configuration structure */
-        (const void *)(&Ftm_Pwm_Ip_UserCfg2)
+        (const void *)(&Ftm_Pwm_Ip_UserCfg3)
     }
 };
 #endif
@@ -252,9 +252,9 @@ const Pwm_ConfigType Pwm_Config =
         /* Index of channels 0 - 7 of FTM_1 in the array of logic PWM channels */
         (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
         /* Index of channels 0 - 7 of FTM_2 in the array of logic PWM channels */
-        (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)1, (Pwm_ChannelType)2, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
-        /* Index of channels 0 - 7 of FTM_3 in the array of logic PWM channels */
         (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
+        /* Index of channels 0 - 7 of FTM_3 in the array of logic PWM channels */
+        (Pwm_ChannelType)1, (Pwm_ChannelType)2, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
         /*---------------------Flexio_0---------------------------*/
         (Pwm_ChannelType)255,            /* Flexio_0_0 unused */
         (Pwm_ChannelType)255,            /* Flexio_0_1 unused */

@@ -133,7 +133,7 @@ static const Pwm_ChannelConfigType Pwm_Channels_PB[PWM_PB_CFG_CHANNELS_COUNT] =
         /** @brief  Channel Id */
         (Pwm_ChannelType)0U,
         /** @brief  Channel class */
-        PWM_FIXED_PERIOD,
+        PWM_VARIABLE_PERIOD,
         /** @brief  Ip channel configuration */
         {
             /** @brief  Hardware Channel Type */
@@ -150,7 +150,8 @@ static const Pwm_ChannelConfigType Pwm_Channels_PB[PWM_PB_CFG_CHANNELS_COUNT] =
             16384U
         },
         /** @brief  The state of the channel output in idle mode */
-        PWM_LOW
+        PWM_LOW,
+        NULL_PTR
     }
 };
 
@@ -183,6 +184,25 @@ const Pwm_ConfigType Pwm_Config =
     (Pwm_InstanceType)PWM_PB_CFG_INSTANCES_COUNT,
     /** @brief  Pointer to the list of Pwm configured channels */
     &Pwm_Instances_PB,
+#endif
+#if (PWM_NOTIFICATION_SUPPORTED == STD_ON)
+    /** @brief  Hardware to logic channel map. Array containing a number of elements
+                equal to total number of available channels on all IP. */
+    {
+        /* Index of channels 0 - 7 of FTM_0 in the array of logic PWM channels */
+        (Pwm_ChannelType)0, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
+        /* Index of channels 0 - 7 of FTM_1 in the array of logic PWM channels */
+        (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
+        /* Index of channels 0 - 7 of FTM_2 in the array of logic PWM channels */
+        (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
+        /* Index of channels 0 - 7 of FTM_3 in the array of logic PWM channels */
+        (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255, (Pwm_ChannelType)255,
+        /*---------------------Flexio_0---------------------------*/
+        (Pwm_ChannelType)255,            /* Flexio_0_0 unused */
+        (Pwm_ChannelType)255,            /* Flexio_0_1 unused */
+        (Pwm_ChannelType)255,            /* Flexio_0_2 unused */
+        (Pwm_ChannelType)255            /* Flexio_0_3 unused */
+    }
 #endif
 };
 
